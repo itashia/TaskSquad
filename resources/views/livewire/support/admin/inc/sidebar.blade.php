@@ -21,11 +21,11 @@
 
             </div>
             <details class="js-list mt-2 mb-2">
-                <summary class="title js-title"> مقالات <span class="icon"></span></summary>
+                <summary class="title js-title"><i class="fa-duotone fa-users"></i> کاربران <span class="icon"></span></summary>
                 <div class="content js-content">
                     <ul>
-                        <li><a href="#" class="text-decoration-none text-dark">مقالات</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">ایجاد نوشته</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">لیست کاربران</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">ایجاد کاربر</a></li>
                     </ul>
                 </div>
             </details>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
     {{ $styles ?? '' }}
+    @livewireStyles
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -72,5 +73,6 @@
     @endif
 </script>
 {{ $scripts ?? '' }}
+@livewireScripts
 </body>
 </html>
