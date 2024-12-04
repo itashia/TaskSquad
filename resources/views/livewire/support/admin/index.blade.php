@@ -1,4 +1,3 @@
-@extends('layouts.admin')
-@section('content')
+<div>
     تست
-@endsection
+</div>
