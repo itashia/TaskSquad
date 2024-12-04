@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="title">
+        - کاربران
+    </x-slot>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -24,7 +27,7 @@
                     <td>{{ $row->mobile }}</td>
                     <td>{{ $row->created_at }}</td>
                     <td class="text-center">
-                        <i class="fa-duotone fa-trash"></i>
+                        <a wire:click="deleteUser({{$row->id}})"><i class="fa-duotone fa-trash text-danger"></i></a>
                     </td>
                 </tr>
             @endforeach
