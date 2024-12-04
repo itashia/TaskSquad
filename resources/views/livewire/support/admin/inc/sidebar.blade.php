@@ -17,8 +17,9 @@
                 <a href="" type="button" class="btn btn-danger rounded-5 btn-sm"><i class="fa-duotone fa-gear"></i> پروفایل </a>
                 <a href="" type="button" class="btn btn-danger rounded-5 btn-sm"><i class="fa-duotone fa-sign-out"></i> خروج</a>
             </div>
-            <div class="d-grid gap-2 mt-3">
-
+            <div class="d-grid gap-2 mt-5">
+                <a href="{{route('admin.index')}}" type="button" class="btn {{ request()->routeIs('admin.index') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-home"></i> پیشخوان </a>
+                <a href="{{ route('users.index') }}" type="button" class="btn {{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-users"></i> کاربران </a>
             </div>
             <details class="js-list mt-2 mb-2">
                 <summary class="title js-title"><i class="fa-duotone fa-users"></i> کاربران <span class="icon"></span></summary>

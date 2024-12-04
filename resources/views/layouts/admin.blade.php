@@ -20,7 +20,7 @@
         @include('livewire.support.admin.inc.navbar')
         <main class="container">
             <div class="mt-3">
-                @yield('content')
+                {{$slot}}
             </div>
         </main>
     </div>
