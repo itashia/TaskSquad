@@ -2,7 +2,16 @@
     <x-slot name="title">
         - کاربران
     </x-slot>
-    <table class="table table-bordered">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ route('users.create') }}" type="button" class="btn btn-primary rounded-5"><i class="fa-duotone fa-plus"></i> افزودن کاربر </a>
+            <button type="button" class="btn btn-danger rounded-5"><i class="fa-duotone fa-trash"></i> زباله دان (۰) </button>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control rounded-5" placeholder="جستجوی کاربران ...">
+        </div>
+    </div>
+    <table class="table table-bordered mt-3">
         <thead>
         <tr>
             <th scope="col" width="50px">شناسه</th>

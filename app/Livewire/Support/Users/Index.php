@@ -10,8 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    use WithPagination;
-    use LivewireAlert;
+    use WithPagination, LivewireAlert;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
