@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Support\Users;
 
+use AllowDynamicProperties;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,26 +11,31 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Create extends Component
+#[AllowDynamicProperties] class Create extends Component
 {
     use WithFileUploads, LivewireAlert;
 
+    #[Validate('required|min:3')]
+    public $name;
+    #[Validate('required|email|unique:users,email')]
+    public $email;
+    #[Validate('required|min:11')]
+    public $mobile;
+    #[Validate('required|min:11')]
+    public $phone;
+    #[Validate('required')]
+    public $gender;
+    #[Validate('required|min:3')]
+    public $position;
+    #[Validate('required|min:6')]
+    public $birthday;
+    #[Validate('required|min:10')]
+    public $imei;
+    #[Validate('required|min:3')]
+    public $username;
+    #[Validate('required|min:8')]
+    public $password;
     public $pic;
-    public User $user;
-
-    protected $rules = [
-        'user.name' => 'required',
-        'user.username' => 'required',
-        'user.email' => 'required',
-        'user.password' => 'required',
-        'user.is_admin' => 'nullable',
-        'user.birthday' => 'nullable',
-        'user.mobile' => 'nullable',
-        'user.phone' => 'nullable',
-        'user.gender' => 'nullable',
-        'user.imei' => 'nullable',
-        'user.position' => 'nullable',
-    ];
 
     public function updated($name): void
     {
@@ -39,8 +45,7 @@ class Create extends Component
     public function saveUser(): \Illuminate\Http\RedirectResponse
     {
         $this->validate();
-
-        $user = User::create([
+        $user = User::query()->create([
             'name' => $this->name,
             'username' => $this->username,
             'email' => $this->email,
@@ -50,8 +55,7 @@ class Create extends Component
             'position' => $this->position,
             'birthday' => $this->birthday,
             'imei' => $this->imei,
-            'is_admin' => 0,
-            'password' => Hash::make($this->user->password),
+            'password' => Hash::make($this->password),
         ]);
 
         if ($this->pic) {
@@ -61,7 +65,7 @@ class Create extends Component
         }
 
         $this->alert('success', 'کاربر جدید ایجاد شد.');
-        return $this->redirect(route('users.index'));
+        return to_route('users.index');
     }
     public function uploadImage(): string
     {
