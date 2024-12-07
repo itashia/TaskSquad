@@ -20,5 +20,6 @@ Route::group(['prefix' => 'admin'], static function ($router){
     // Users
     $router->get('/users', \App\Livewire\Support\Users\Index::class)->name('users.index');
     $router->get('/users/create', \App\Livewire\Support\Users\Create::class)->name('users.create');
+    $router->get('/users/user/{user}', \App\Livewire\Support\Users\Edit::class)->name('users.edit');
 
 });

@@ -35,6 +35,7 @@ use Livewire\WithFileUploads;
     public $username;
     #[Validate('required|min:8')]
     public $password;
+    #[Validate('image|max:2048')]
     public $pic;
 
     public function updated($name): void
@@ -42,9 +43,10 @@ use Livewire\WithFileUploads;
         $this->validateOnly($name);
     }
 
-    public function saveUser(): \Illuminate\Http\RedirectResponse
+    public function saveUser(): void
     {
         $this->validate();
+
         $user = User::query()->create([
             'name' => $this->name,
             'username' => $this->username,
@@ -64,8 +66,8 @@ use Livewire\WithFileUploads;
             ]);
         }
 
+        $this->redirectRoute('users.index');
         $this->alert('success', 'کاربر جدید ایجاد شد.');
-        return to_route('users.index');
     }
     public function uploadImage(): string
     {

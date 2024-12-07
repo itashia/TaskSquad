@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="title">
+        - ایجاد کاربر جدید
+    </x-slot>
     <div class="card mb-3 rounded-4">
         <div class="card-body">
             <form class="row g-3" wire:submit.prevent="saveUser" enctype="multipart/form-data">
@@ -64,7 +67,9 @@
                 </div>
                 <div class="col-md-3 text-center">
                     <div class="mt-3">
-
+                        @if( $pic )
+                            <img src="{{ $pic->temporaryUrl() }}" class="img-fluid rounded-4" alt="" srcset="">
+                        @endif
                     </div>
                 </div>
                 <div class="col-12">
