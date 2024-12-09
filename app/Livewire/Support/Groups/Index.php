@@ -23,8 +23,8 @@ class Index extends Component
 
     public function deleteGroups($id): void
     {
-        $user = Groups::find($id);
-        $user->delete();
+        $group = Groups::find($id);
+        $group->delete();
         $this->alert('success', 'گروه مورد نظر حذف شد!');
     }
 

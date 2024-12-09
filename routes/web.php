@@ -29,4 +29,9 @@ Route::group(['prefix' => 'admin'], static function ($router){
     $router->get('/groups', \App\Livewire\Support\Groups\Index::class)->name('groups.index');
     $router->get('/groups/create', \App\Livewire\Support\Groups\Create::class)->name('groups.create');
 
+    // Roles
+
+    $router->get('/roles', \App\Livewire\Support\Roles\Index::class)->name('roles.index');
+    $router->get('/roles/create', \App\Livewire\Support\Roles\Create::class)->name('roles.create');
+
 });
