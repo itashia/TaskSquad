@@ -3,7 +3,7 @@
         - زباله دان کاربران
     </x-slot>
     <a href="{{ route('users.index') }}" type="button" class="btn btn-light rounded-5"><i class="fa-duotone fa-arrow-right"></i> برگرد به صفحه اول کاربران </a>
-    <button type="button" class="btn btn-danger rounded-5"><i class="fa-duotone fa-trash"></i> زباله دان ({{ \App\Models\User::onlyTrashed()->count() }}) </button>
+    <button type="button" class="btn btn-danger rounded-5"><i class="fa-duotone fa-trash"></i> تعداد کاربران در شرف حذف نهایی ({{ \App\Models\User::onlyTrashed()->count() }}) </button>
     <table class="table table-bordered mt-3">
         <thead>
         <tr>

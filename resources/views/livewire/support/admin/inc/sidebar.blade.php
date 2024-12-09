@@ -20,6 +20,7 @@
             <div class="d-grid gap-2 mt-5">
                 <a href="{{route('admin.index')}}" type="button" class="btn {{ request()->routeIs('admin.index') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-home"></i> پیشخوان </a>
                 <a href="{{ route('users.index') }}" type="button" class="btn {{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-users"></i> کاربران </a>
+                <a href="{{ route('groups.index') }}" type="button" class="btn {{ request()->routeIs('groups.index') || request()->routeIs('groups.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-user-group"></i> گروه ها </a>
             </div>
             <details class="js-list mt-2 mb-2">
                 <summary class="title js-title"><i class="fa-duotone fa-users"></i> کاربران <span class="icon"></span></summary>
