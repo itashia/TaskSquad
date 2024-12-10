@@ -19,4 +19,5 @@ class Groups extends Model
     {
         return $this->belongsTo(Groups::class,'type','id');
     }
+
 }

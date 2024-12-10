@@ -33,7 +33,7 @@
                         @if($row->type == 0)
                             ندارد
                         @else
-                            {{ $row->groups->name }}
+                            {{ optional($row->groups)->name ?? 'گروه وجود ندارد.' }}
                         @endif
                     </td>
                     <td class="text-center">
