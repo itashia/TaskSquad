@@ -17,8 +17,8 @@
         <tr>
             <th scope="col" width="50px">شناسه</th>
             <th scope="col" width="100px">لوگو</th>
-            <th scope="col" width="200px">عنوان</th>
-            <th scope="col">نوع</th>
+            <th scope="col" width="200px">نام گروه</th>
+            <th scope="col">سرگروه</th>
             <th scope="col" width="100px">عملیات</th>
         </tr>
         </thead>
@@ -30,11 +30,7 @@
                     <th><img src="{{ asset('storage/'. $row->logo ) }}" class="img-fluid rounded-4" alt="" srcset=""></th>
                     <td>{{ $row->name }}</td>
                     <td>
-                        @if($row->type == 0)
-                            ندارد
-                        @else
-                            {{ optional($row->groups)->name ?? 'گروه وجود ندارد.' }}
-                        @endif
+                        {{ optional($row->groups)->name ?? 'گروه وجود ندارد.' }}
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-danger btn-sm" wire:click="deleteGroups({{$row->id}})"><i class="fa-duotone fa-trash text-white"></i></button>
