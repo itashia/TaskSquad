@@ -3,6 +3,7 @@
 namespace App\Livewire\Support\Permissions;
 
 use App\Models\Permission;
+use Illuminate\Support\Facades\DB;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -23,8 +24,15 @@ class Index extends Component
 
     public function deletePermissions($id): void
     {
-        $role = Permission::find($id);
-        $role->delete();
+        $permissions = Permission::find($id);
+        $permissions->delete();
+        $this->alert('success', 'دسترسی مورد نظر حذف شد!');
+    }
+
+    public function deletePermissionRole($id): void
+    {
+        $permissionRoles = DB::table('permission_role')->where('permission_id',$id);
+        $permissionRoles->delete();
         $this->alert('success', 'دسترسی مورد نظر حذف شد!');
     }
 
