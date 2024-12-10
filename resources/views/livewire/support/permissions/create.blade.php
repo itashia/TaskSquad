@@ -1,18 +1,18 @@
 <div>
     <x-slot name="title">
-        - ایجاد مقام جدید
+        - ایجاد دسترسی جدید
     </x-slot>
     <div class="col-md-4 offset-md-4">
         <div class="card mb-3 rounded-4">
             <div class="card-body">
-                <form class="row g-3" wire:submit.prevent="saveRoles">
+                <form class="row g-3" wire:submit.prevent="savePermissions">
                     <div class="col-md-12">
-                        <label for="input1" class="form-label">عنوان انگلیسی</label>
+                        <label for="input1" class="form-label">نام دسترسی به انگلیسی</label>
                         <input type="text" class="form-control rounded-5 @error('title') is-invalid @enderror" name="title" wire:model="title" id="input1">
                         <div class="text-danger">@error('title') {{ $message }} @enderror</div>
                     </div>
                     <div class="col-md-12">
-                        <label for="input1" class="form-label">نام مقام به فارسی</label>
+                        <label for="input1" class="form-label">نام دسترسی به فارسی</label>
                         <input type="text" class="form-control rounded-5 @error('value') is-invalid @enderror" name="value" wire:model="value" id="input1">
                         <div class="text-danger">@error('value') {{ $message }} @enderror</div>
                     </div>

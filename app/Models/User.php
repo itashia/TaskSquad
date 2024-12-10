@@ -60,4 +60,34 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function permissions(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+
+    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Roles::class);
+    }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions->contains('value',$permission->value) || $this->hasRole($permission->role);
+    }
+
+    public function hasRole($roles): bool
+    {
+        return !! $roles->intersect($this->roles)->all();
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    public function isStaff()
+    {
+        return $this->is_staff;
+    }
 }

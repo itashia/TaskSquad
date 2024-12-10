@@ -30,7 +30,7 @@
                     <th><img src="{{ asset('storage/'. $row->logo ) }}" class="img-fluid rounded-4" alt="" srcset=""></th>
                     <td>{{ $row->name }}</td>
                     <td>
-                        {{ optional($row->groups)->name ?? 'گروه وجود ندارد.' }}
+                        {{ optional($row->groups)->name ?? 'ندارد' }}
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-danger btn-sm" wire:click="deleteGroups({{$row->id}})"><i class="fa-duotone fa-trash text-white"></i></button>

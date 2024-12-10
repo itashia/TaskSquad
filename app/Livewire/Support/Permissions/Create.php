@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Livewire\Support\Roles;
+namespace App\Livewire\Support\Permissions;
 
-use App\Models\Roles;
+use App\Models\Permission;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -15,28 +15,27 @@ class Create extends Component
     public $title;
     #[Validate('required|min:6')]
     public $value;
-    public Roles $roles;
+    public Permission $permission;
 
     public function updated($title): void
     {
         $this->validateOnly($title);
     }
 
-    public function saveRoles(): void
+    public function savePermissions(): void
     {
         $this->validate();
 
-        Roles::query()->create([
+        Permission::query()->create([
             'title' => $this->title,
             'value' => $this->value,
         ]);
 
-        $this->alert('success', 'مقام جدید ایجاد شد.');
-        $this->redirectRoute('roles.index');
+        $this->alert('success', 'دسترسی جدید ایجاد شد.');
+        $this->redirectRoute('permissions.index');
     }
-
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('livewire.support.roles.create');
+        return view('livewire.support.permissions.create');
     }
 }
