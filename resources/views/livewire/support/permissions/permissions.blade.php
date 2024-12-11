@@ -5,7 +5,29 @@
             <div class="col-md-4">
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body">
-                        <h5 class="fw-bold text-center mb-4">{{ $row->value }}</h5>
+                        <h5 class="fw-bold text-center mb-4">
+                            <span class="badge rounded-5
+                                @if($row->id == 1)
+                                   text-bg-primary
+                                @elseif($row->id ==2)
+                                   text-bg-danger
+                                @elseif($row->id ==3)
+                                   text-bg-success
+                                @elseif($row->id ==4)
+                                   text-bg-info
+                                @elseif($row->id ==5)
+                                   text-bg-warning
+                                @elseif($row->id ==6)
+                                   text-bg-white
+                                @elseif($row->id ==7)
+                                   text-bg-dark
+                                @else
+                                   text-bg-secondary
+                               @endif
+                               ">
+                                <i class="fa-duotone fa-tasks"></i> {{$row->value}}
+                            </span>
+                        </h5>
                         <h6 class="mb-4"> مجموع سمت های دسترسی <span class="badge text-bg-danger float-end">{{ DB::table('permission_role')->where('role_id',$row->id)->count() }}</span></h6>
 
                         @php

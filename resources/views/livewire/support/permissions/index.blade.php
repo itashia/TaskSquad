@@ -29,23 +29,23 @@
                     <td>{{ $row->title }}</td>
                     <td>
                         @foreach(\App\Models\Roles::get() as $row)
-                            <button type="submit" style="cursor: pointer; border: none" wire:click="addRoles([{{ $row->id }},{{ $row->id }}])" class="badge
+                            <button type="button" style="cursor: pointer; border: none" wire:click="addRoles([{{ $row->id }},{{ $row->id }}])" class="btn btn-sm rounded-5
                                 @if($row->id == 1)
-                                   text-bg-primary
+                                   btn-primary
                                 @elseif($row->id ==2)
-                                   text-bg-danger
+                                   btn-danger
                                 @elseif($row->id ==3)
-                                   text-bg-success
+                                   btn-success
                                 @elseif($row->id ==4)
-                                   text-bg-info
+                                   btn-info
                                 @elseif($row->id ==5)
-                                   text-bg-warning
+                                   btn-warning
                                 @elseif($row->id ==6)
-                                   text-bg-white
+                                   btn-white
                                 @elseif($row->id ==7)
-                                   text-bg-dark
+                                   btn-dark
                                 @else
-                                   text-bg-secondary
+                                   btn-secondary
                                @endif
                                 fs-8 m-1">
                                 <i class="fa-duotone fa-plus"></i> {{$row->value}}
