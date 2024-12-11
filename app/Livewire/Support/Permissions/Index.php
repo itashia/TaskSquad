@@ -36,6 +36,25 @@ class Index extends Component
         $this->alert('success', 'دسترسی مورد نظر حذف شد!');
     }
 
+    public function addRoles($data): void
+    {
+        $permissions = $data[0];
+        $role = $data[1];
+
+        if (DB::table('permission_role')
+            ->where('role_id','=', $role)
+            ->where('permission_id','=', $permissions)->first()){
+            $this->alert('error', 'مشکلی در ایجاد کردن به وجود آمد!');
+        }else{
+            DB::table('permission_role')->insert([
+                'permission_id' => $permissions,
+                'role_id' => $role,
+            ]);
+            $this->alert('success', 'با موفقیت ایجاد شد!');
+        }
+
+    }
+
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $permissions = $this->readyToLoad ? Permission::where('title','LIKE',"%{$this->search}%")->

@@ -15,9 +15,9 @@
         <thead>
         <tr>
             <th scope="col" width="50px">شناسه</th>
-            <th scope="col" width="200px">عنوان</th>
-            <th scope="col" width="200px">نام مقام به فارسی</th>
-            <th scope="col" width="150px">تاریخ ایجاد</th>
+            <th scope="col" width="200px">نام دسترسی</th>
+            <th scope="col">اختصاص به</th>
+            <th scope="col" width="200px">تاریخ ایجاد</th>
             <th scope="col" width="50px">عملیات</th>
         </tr>
         </thead>
@@ -27,7 +27,31 @@
                 <tr>
                     <th scope="row">{{ $row->id }}</th>
                     <td>{{ $row->title }}</td>
-                    <td>{{ $row->value }}</td>
+                    <td>
+                        @foreach(\App\Models\Roles::get() as $row)
+                            <button type="submit" style="cursor: pointer; border: none" wire:click="addRoles([{{ $row->id }},{{ $row->id }}])" class="badge
+                                @if($row->id == 1)
+                                   text-bg-primary
+                                @elseif($row->id ==2)
+                                   text-bg-danger
+                                @elseif($row->id ==3)
+                                   text-bg-success
+                                @elseif($row->id ==4)
+                                   text-bg-info
+                                @elseif($row->id ==5)
+                                   text-bg-warning
+                                @elseif($row->id ==6)
+                                   text-bg-white
+                                @elseif($row->id ==7)
+                                   text-bg-dark
+                                @else
+                                   text-bg-secondary
+                               @endif
+                                fs-8 m-1">
+                                <i class="fa-duotone fa-plus"></i> {{$row->value}}
+                            </button>
+                        @endforeach
+                    </td>
                     <td>{{ $row->created_at }}</td>
                     <td class="text-center">
                         <button type="button" class="btn btn-danger btn-sm" wire:click="deletePermissions({{$row->id}})"><i class="fa-duotone fa-trash"></i></button>
