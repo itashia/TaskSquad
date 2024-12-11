@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Support\Permissions;
 
-use App\Models\Permission;
+use App\Models\Permissions;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -15,7 +15,7 @@ class Create extends Component
     public $title;
     #[Validate('required|min:6')]
     public $value;
-    public Permission $permission;
+    public Permissions $permission;
 
     public function updated($title): void
     {
@@ -26,7 +26,7 @@ class Create extends Component
     {
         $this->validate();
 
-        Permission::query()->create([
+        Permissions::query()->create([
             'title' => $this->title,
             'value' => $this->value,
         ]);

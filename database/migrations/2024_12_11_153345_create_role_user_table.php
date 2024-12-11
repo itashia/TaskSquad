@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('role_user', function (Blueprint $table) {
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('id')
-                ->on('roles')->onDelete('CASCADE');
+                ->on('roles')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('CASCADE');
+                ->on('users')->onDelete('cascade');
             $table->primary(['role_id','user_id']);
         });
     }
