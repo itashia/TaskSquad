@@ -15,4 +15,17 @@ class TaskDetail extends Model
         'action_type_id',
         'action_id'
     ];
+
+    public function task(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Task::class);
+    }
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function views(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(TaskView::class);
+    }
 }

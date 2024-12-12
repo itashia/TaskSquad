@@ -14,5 +14,13 @@ class UserHasTask extends Model
         'task_id',
         'access'
     ];
-    
+
+    public function task(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Task::class);
+    }
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
