@@ -23,14 +23,13 @@
                 <a href="{{ route('groups.index') }}" type="button" class="btn {{ request()->routeIs('groups.index') || request()->routeIs('groups.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-user-group"></i> گروه ها </a>
                 <a href="{{ route('roles.index') }}" type="button" class="btn {{ request()->routeIs('roles.index') || request()->routeIs('roles.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-tower-control"></i> مقام ها </a>
                 <a href="{{ route('permissions.index') }}" type="button" class="btn {{ request()->routeIs('permissions.index') || request()->routeIs('permissions.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-lock"></i> دسترسی ها </a>
-                <a href="{{ route('tasks.index') }}" type="button" class="btn {{ request()->routeIs('tasks.index') || request()->routeIs('tasks.send') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-tasks"></i> وظایف ها </a>
             </div>
-            <details class="js-list mt-2 mb-2">
-                <summary class="title js-title"><i class="fa-duotone fa-users"></i> کاربران <span class="icon"></span></summary>
+            <details class="js-list mt-2 mb-2 {{ request()->routeIs('tasks.index') || request()->routeIs('tasks.create') ? 'btn-light active' : 'btn-light' }}" {{ request()->routeIs('tasks.index') || request()->routeIs('tasks.create') ? 'open' : '' }}>
+                <summary class="title js-title"><i class="fa-duotone fa-tasks"></i> وظایف ها <span class="icon"></span></summary>
                 <div class="content js-content">
                     <ul>
-                        <li><a href="#" class="text-decoration-none text-dark">لیست کاربران</a></li>
-                        <li><a href="#" class="text-decoration-none text-dark">ایجاد کاربر</a></li>
+                        <li><a href="{{ route('tasks.index') }}" type="button" class="btn {{ request()->routeIs('tasks.index') ? 'btn-light active' : 'btn-light' }} rounded-5" style="width: 100%"> وظایف ها </a></li>
+                        <li><a href="{{ route('tasks.create') }}" type="button" class="btn {{ request()->routeIs('tasks.create') ? 'btn-light active' : 'btn-light' }} rounded-5" style="width: 100%"> ایجاد وظایف </a></li>
                     </ul>
                 </div>
             </details>

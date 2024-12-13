@@ -1,3 +1,5 @@
+// Menu Dropdown
+
 const js_list = ".js-list";
 const js_title = ".js-title";
 const js_content = ".js-content";
@@ -15,6 +17,11 @@ const setUpAccordion = () => {
         const title = element.querySelector(js_title);
         const content = element.querySelector(js_content);
 
+        // Ensure initial state respects the "open" attribute
+        if (element.hasAttribute("open")) {
+            element.classList.add(IS_OPENED_CLASS);
+        }
+
         title.addEventListener("click", (event) => {
             event.preventDefault();
             if (element.dataset.animStatus === RUNNING_VALUE) {
@@ -22,7 +29,8 @@ const setUpAccordion = () => {
             }
 
             if (element.open) {
-                element.classList.toggle(IS_OPENED_CLASS);
+                // Close the menu
+                element.classList.remove(IS_OPENED_CLASS);
                 const closingAnim = content.animate(closingAnimKeyframes(content), animTiming);
                 element.dataset.animStatus = RUNNING_VALUE;
                 closingAnim.onfinish = () => {
@@ -30,8 +38,9 @@ const setUpAccordion = () => {
                     element.dataset.animStatus = "";
                 };
             } else {
+                // Open the menu
                 element.setAttribute("open", "true");
-                element.classList.toggle(IS_OPENED_CLASS);
+                element.classList.add(IS_OPENED_CLASS);
                 const openingAnim = content.animate(openingAnimKeyframes(content), animTiming);
                 element.dataset.animStatus = RUNNING_VALUE;
                 openingAnim.onfinish = () => {
@@ -40,29 +49,25 @@ const setUpAccordion = () => {
             }
         });
     });
-}
+};
+
 const animTiming = {
     duration: 200,
-    easing: "ease-out"
+    easing: "ease-out",
 };
+
 const closingAnimKeyframes = (content) => [
-    {
-        height: content.offsetHeight + 'px',
-        opacity: 1,
-    }, {
-        height: 0,
-        opacity: 0,
-    }
+    { height: content.offsetHeight + "px", opacity: 1 },
+    { height: 0, opacity: 0 },
 ];
 
 const openingAnimKeyframes = (content) => [
-    {
-        height: 0,
-        opacity: 0,
-    }, {
-        height: content.offsetHeight + 'px',
-        opacity: 1,
-    }
+    { height: 0, opacity: 0 },
+    { height: content.offsetHeight + "px", opacity: 1 },
 ];
+
+
+
+
 
 
