@@ -18,7 +18,7 @@ class TaskDetail extends Model
 
     public function task(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Task::class);
+        return $this->belongsTo(Tasks::class);
     }
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

@@ -39,4 +39,10 @@ Route::group(['prefix' => 'admin'], static function ($router){
     $router->get('/permissions', \App\Livewire\Support\Permissions\Index::class)->name('permissions.index');
     $router->get('/permissions/create', \App\Livewire\Support\Permissions\Create::class)->name('permissions.create');
 
+    // Tasks
+
+    $router->get('/tasks', \App\Livewire\Support\Tasks\Index::class)->name('tasks.index');
+    $router->get('/tasks/create', \App\Livewire\Support\Tasks\Create::class)->name('tasks.create');
+    $router->get('/tasks/send', \App\Livewire\Support\Tasks\Send::class)->name('tasks.send');
+
 });

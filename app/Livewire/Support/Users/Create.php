@@ -57,6 +57,7 @@ use Livewire\WithFileUploads;
             'position' => $this->position,
             'birthday' => $this->birthday,
             'imei' => $this->imei,
+            'is_admin' => 0,
             'password' => Hash::make($this->password),
         ]);
 

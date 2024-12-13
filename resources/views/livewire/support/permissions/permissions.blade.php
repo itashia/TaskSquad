@@ -25,7 +25,7 @@
                                    text-bg-secondary
                                @endif
                                ">
-                                <i class="fa-duotone fa-tasks"></i> {{$row->value}}
+                                <i class="fa-duotone fa-lock"></i> {{$row->value}}
                             </span>
                             </h5>
                             <h6 class="mb-4"> مجموع سمت های دسترسی <span
