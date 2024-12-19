@@ -17,7 +17,7 @@ class UserHasTask extends Model
 
     public function task(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Tasks::class);
+        return $this->belongsTo(Task::class);
     }
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

@@ -11,7 +11,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-#[AllowDynamicProperties] class Create extends Component
+class Create extends Component
 {
     use WithFileUploads, LivewireAlert;
 

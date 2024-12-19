@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Media extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $fillable=[
         'path',
         'size',
         'name',
         'type'
     ];
+
 }

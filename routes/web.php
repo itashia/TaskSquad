@@ -11,7 +11,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin'], static function ($router){
+Route::group(['prefix' => 'admin', 'middleware' => 'web'], static function ($router){
 
     // Admin
 
@@ -44,5 +44,6 @@ Route::group(['prefix' => 'admin'], static function ($router){
     $router->get('/tasks', \App\Livewire\Support\Tasks\Index::class)->name('tasks.index');
     $router->get('/tasks/create', \App\Livewire\Support\Tasks\Create::class)->name('tasks.create');
     $router->get('/tasks/send', \App\Livewire\Support\Tasks\Send::class)->name('tasks.send');
+
 
 });

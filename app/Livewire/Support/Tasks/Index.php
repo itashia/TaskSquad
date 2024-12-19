@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Support\Tasks;
 
-use App\Models\Tasks;
+use App\Models\Task;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -23,14 +23,14 @@ class Index extends Component
 
     public function deleteTasks($id): void
     {
-        $tasks = Tasks::find($id);
+        $tasks = Task::find($id);
         $tasks->delete();
         $this->alert('success', 'وظایف مورد نظر حذف شد!');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $tasks = Tasks::paginate(10);
+        $tasks = Task::paginate(10);
         return view('livewire.support.tasks.index', compact('tasks'));
     }
 }

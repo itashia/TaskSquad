@@ -2,73 +2,63 @@
 
 namespace App\Livewire\Support\Tasks;
 
-use AllowDynamicProperties;
 use App\Models\Media;
 use App\Models\Roles;
 use App\Models\TaskDetail;
-use App\Models\Tasks;
+use App\Models\Task;
+use App\Models\TaskStatus;
 use App\Models\UserHasTask;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-#[AllowDynamicProperties] class Create extends Component
+class Create extends Component
 {
     use WithFileUploads, LivewireAlert;
-
     #[Validate('required')]
     public $type_id;
     #[Validate('required')]
     public $subject;
     #[Validate('required')]
     public $user_id;
-    #[Validate('required')]
-    public $owner_id;
-    #[Validate('required')]
     public $due_date;
-    #[Validate('required')]
     public $number;
-    #[Validate('required')]
-    public $status_id;
     #[Validate('required')]
     public $description;
     #[Validate('required')]
     public $priority_id;
     #[Validate('nullable')]
-    public $fileOne;
+    public $file1;
     #[Validate('nullable')]
-    public $fileTwo;
+    public $file2;
     #[Validate('nullable')]
-    public $fileThree;
-    #[Validate('nullable|array')]
+    public $file3;
     public $role;
 
-    public function mount(): void
-    {
-        $this->task = new Tasks();
-    }
+    public Task $task;
 
     public function updated($subject): void
     {
         $this->validateOnly($subject);
     }
-
-    public function saveTasks(): void
+    public function saveTask(): void
     {
+
         $this->validate();
 
-        $idTask = Tasks::get()->last()->id;
+        $id_task = Task::get()->last()->id;
 
-        $task = Tasks::query()->create([
+        $task = Task::query()->create([
             'type_id' => $this->type_id,
             'subject' => $this->subject,
             'user_id' => $this->user_id,
             'owner_id' => auth()->user()->id,
             'due_date' => Carbon::now(),
-            'number' => $idTask + 1,
+            'number' => $id_task+1,
             'status_id' => 1,
             'priority_id' => $this->priority_id,
         ]);
@@ -79,27 +69,27 @@ use Livewire\WithFileUploads;
             'user_id' => $this->user_id,
         ]);
 
-        if ($this->fileOne) {
+        if ($this->file1) {
             Media::create([
-                'path' => $this->uploadFileOne(),
-                'name' => $this->task->subject,
-                'size' => $this->fileOne->getSize(),
+                'path' => $this->uploadFile1(),
+                'name' => $this->subject,
+                'size' => $this->file1->getSize(),
             ]);
         }
 
-        if ($this->fileTwo) {
+        if ($this->file2) {
             Media::create([
-                'path' => $this->uploadFileTwo(),
-                'name' => $this->task->subject,
-                'size' => $this->fileTwo->getSize(),
+                'path' => $this->uploadFile2(),
+                'name' => $this->subject,
+                'size' => $this->file2->getSize(),
             ]);
         }
 
-        if ($this->fileThree) {
+        if ($this->file3) {
             Media::create([
-                'path' => $this->uploadFileThree(),
-                'name' => $this->task->subject,
-                'size' => $this->fileThree->getSize(),
+                'path' => $this->uploadFile3(),
+                'name' => $this->subject,
+                'size' => $this->file3->getSize(),
             ]);
         }
 
@@ -117,37 +107,41 @@ use Livewire\WithFileUploads;
         $this->redirectRoute('tasks.index');
         $this->alert('success', 'وظایف جدید ایجاد شد.');
     }
+    public function uploadFile1(): string
+    {
+        $year = now()->year;
+        $month = now()->month;
+        $directory = "tasks/$year/$month";
+        $name= $this->file1->getClientOriginalName();
+        $this->file1->storeAs($directory,$name);
+        return "$directory/$name";
+    }
+    public function uploadFile2(): string
+    {
+        $year = now()->year;
+        $month = now()->month;
+        $directory = "tasks/$year/$month";
+        $name= $this->file2->getClientOriginalName();
+        $this->file2->storeAs($directory,$name);
+        return "$directory/$name";
+    }
+    public function uploadFile3(): string
+    {
+        $year = now()->year;
+        $month = now()->month;
+        $directory = "tasks/$year/$month";
+        $name= $this->file3->getClientOriginalName();
+        $this->file3->storeAs($directory,$name);
+        return "$directory/$name";
+    }
 
-    public function uploadFileOne(): string
-    {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "tasks/$year/$month";
-        $name= $this->fileOne->getClientOriginalName();
-        $this->fileOne->storeAs($directory,$name);
-        return "$directory/$name";
-    }
-    public function uploadFileTwo(): string
-    {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "tasks/$year/$month";
-        $name= $this->fileTwo->getClientOriginalName();
-        $this->fileTwo->storeAs($directory,$name);
-        return "$directory/$name";
-    }
-    public function uploadFileThree(): string
-    {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "tasks/$year/$month";
-        $name= $this->fileThree->getClientOriginalName();
-        $this->fileThree->storeAs($directory,$name);
-        return "$directory/$name";
-    }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('livewire.support.tasks.create');
+        return view('livewire.support.tasks.create', [
+            'roles' => \App\Models\Roles::all(),
+            'users' => \App\Models\User::where('is_staff', 1)->get(),
+            'statuses' => TaskStatus::all(),
+        ]);
     }
 }
