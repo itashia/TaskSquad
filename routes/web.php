@@ -11,11 +11,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'web'], static function ($router){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], static function ($router){
 
     // Admin
 
     $router->get('/', \App\Livewire\Support\Admin\Index::class)->name('admin.index');
+    $router->get('/logout', [\App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
 
     // Users
 
@@ -23,6 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], static function ($rou
     $router->get('/users/create', \App\Livewire\Support\Users\Create::class)->name('users.create');
     $router->get('/users/user/{user}', \App\Livewire\Support\Users\Edit::class)->name('users.edit');
     $router->get('/users/trash', \App\Livewire\Support\Users\Trash::class)->name('users.trash');
+    $router->get('/users/{user}/permissions', \App\Livewire\Support\Users\PermissionUser::class)->name('permissionUser.create');
 
     // Groups
 
@@ -44,6 +46,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], static function ($rou
     $router->get('/tasks', \App\Livewire\Support\Tasks\Index::class)->name('tasks.index');
     $router->get('/tasks/create', \App\Livewire\Support\Tasks\Create::class)->name('tasks.create');
     $router->get('/tasks/send', \App\Livewire\Support\Tasks\Send::class)->name('tasks.send');
-
 
 });

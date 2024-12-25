@@ -28,8 +28,9 @@
                     <th scope="row">{{ $row->id }}</th>
                     <td>{{ $row->title }}</td>
                     <td>
-                        @foreach(\App\Models\Roles::get() as $row)
-                            <button type="button" style="cursor: pointer; border: none" wire:click="addRoles([{{ $row->id }},{{ $row->id }}])" class="btn btn-sm rounded-5
+                        @foreach(\App\Models\Roles::get() as $rows)
+
+                            <button type="button" style="cursor: pointer; border: none" wire:click="addRoles([{{ $row->id }}, {{ $rows->id }}])" class="btn btn-sm rounded-5
                                 @if($row->id == 1)
                                    btn-primary
                                 @elseif($row->id ==2)
@@ -48,7 +49,7 @@
                                    btn-secondary
                                @endif
                                 fs-8 m-1">
-                                <i class="fa-duotone fa-plus"></i> {{$row->value}}
+                                <i class="fa-duotone fa-plus"></i> {{$row->value}} | {{$rows->title}}
                             </button>
                         @endforeach
                     </td>

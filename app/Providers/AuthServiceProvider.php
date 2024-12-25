@@ -28,9 +28,9 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
         });
 
-        foreach (Permissions::all() as $row){
-            Gate::define($row->title, function ($user) use ($row){
-                return $user->hasPermission($row);
+        foreach (Permissions::all() as $permission){
+            Gate::define($permission->title, function ($user) use ($permission){
+                return $user->hasPermission($permission);
             });
         }
     }

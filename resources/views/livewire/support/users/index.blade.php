@@ -22,7 +22,7 @@
                 <th scope="col" width="150px">سمت</th>
                 <th scope="col" width="150px">موبایل</th>
                 <th scope="col" width="200px">تاریخ ایجاد</th>
-                <th scope="col" width="100px">عملیات</th>
+                <th scope="col" width="150px">عملیات</th>
             </tr>
         </thead>
         @if($readyToLoad)
@@ -38,8 +38,9 @@
                     <td>{{ $row->mobile }}</td>
                     <td>{{ $row->created_at }}</td>
                     <td class="text-center">
-                        <a href="{{ route('users.edit', $row->id) }}" type="button" class="btn btn-secondary btn-sm"><i class="fa-duotone fa-user-edit text-white"></i></a>
-                        <button type="button" class="btn btn-danger btn-sm" wire:click="deleteUser({{$row->id}})"><i class="fa-duotone fa-trash text-white"></i></button>
+                        <a href="{{ route('users.edit', $row->id) }}" type="button" class="btn btn-secondary btn-sm"><i class="fa-duotone fa-user-edit"></i></a>
+                        <a href="{{ route('permissionUser.create', $row->id) }}" type="button" class="btn btn-warning btn-sm"><i class="fa-duotone fa-lock"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm" wire:click="deleteUser({{$row->id}})"><i class="fa-duotone fa-trash"></i></button>
                     </td>
                 </tr>
             @endforeach

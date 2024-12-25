@@ -63,23 +63,36 @@ class User extends Authenticatable
 
     public function permissions(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Permissions::class);
+        return $this->belongsToMany(Permissions::class, 'permissions_user', 'user_id', 'permission_id');
     }
 
-    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function hasPermission($permission): bool
     {
-        return $this->belongsToMany(Roles::class);
+        return $this->permissions->contains('title', $permission->title);
     }
 
-    public function hasPermission($permission)
-    {
-        return $this->permissions->contains('value',$permission->value) || $this->hasRole($permission->role);
-    }
+//    public function givePermission($permission): false|array
+//    {
+//        if (is_string($permission)) {
+//            $permission = Permissions::where('title', $permission)->first();
+//        }
+//
+//        if (!$permission) {
+//            return false;
+//        }
+//
+//        return $this->permissions()->syncWithoutDetaching($permission);
+//    }
+//
+//    public function revokePermission($permission): int
+//    {
+//        if (is_string($permission)) {
+//            $permission = Permissions::where('title', $permission)->first();
+//        }
+//
+//        return $this->permissions()->detach($permission);
+//    }
 
-    public function hasRole($roles): bool
-    {
-        return !! $roles->intersect($this->roles)->all();
-    }
 
     public function isAdmin()
     {
@@ -90,4 +103,15 @@ class User extends Authenticatable
     {
         return $this->is_staff;
     }
+
+    public function hasRole($roles)
+    {
+        return !! $roles->intersect($this->roles)->all();
+    }
+
+    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Roles::class, 'role_user', 'user_id', 'role_id'); // Adjust Role class namespace if necessary
+    }
+
 }

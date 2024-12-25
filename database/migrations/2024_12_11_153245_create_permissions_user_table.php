@@ -15,9 +15,11 @@ return new class extends Migration
             $table->unsignedBigInteger('permission_id');
             $table->foreign('permission_id')->references('id')
                 ->on('permissions')->onDelete('cascade');
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');
+
             $table->primary(['permission_id','user_id']);
         });
     }

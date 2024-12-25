@@ -33,18 +33,17 @@
                             </h6>
 
                             @php
-                                $permissionsRoles = DB::table('permissions_role')->where('role_id',$row->id)->get();
+                                $permissionsRoles = DB::table('permissions_role')->where('role_id', $row->id)->get();
                             @endphp
 
                             <div class="row">
                                 @foreach($permissionsRoles as $row)
-                                    @foreach(\App\Models\Permissions::where('id', $row->permission_id)->get() as $row)
+                                    @foreach(\App\Models\Permissions::where('id', $row->permission_id)->get() as $rows)
                                         <div class="col-md-10">
-                                            <h6> - {{ $row->value }}</h6>
+                                            <h6> - {{ $rows->value }}</h6>
                                         </div>
                                         <div class="col-md-2">
-                                            <div class="float-end" wire:click="deletePermissionRole({{ $row->id }})"><i
-                                                    class="fa-duotone fa-trash text-danger"></i></div>
+                                            <div class="float-end" wire:click="deletePermissionRole({{ $rows->id }})"><i class="fa-duotone fa-trash text-danger"></i></div>
                                         </div>
                                     @endforeach
                                 @endforeach

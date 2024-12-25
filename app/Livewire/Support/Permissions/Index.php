@@ -32,7 +32,7 @@ class Index extends Component
 
     public function deletePermissionRole($id): void
     {
-        $permissionRoles = DB::table('permissions_role')->where('permission_id',$id);
+        $permissionRoles = DB::table('permissions_role')->where('permission_id', $id);
         $permissionRoles->delete();
         $this->alert('success', 'دسترسی مورد نظر حذف شد!');
     }
@@ -65,8 +65,6 @@ class Index extends Component
             ]);
             $this->alert('success', 'با موفقیت ایجاد شد!');
         }
-
-
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
