@@ -30,9 +30,14 @@ class PermissionUser extends Component
             $user->roles()->sync($this->roles);
         }
 
-        if (!empty($this->roles)) {
-            $user->roles()->sync($this->roles);
+        if (!empty($this->permissions)) {
+            $user->permissions()->sync($this->permissions);
         }
+
+        $user->roles()->role_id = $this->roles;
+        $user->permissions()->user_id = $this->permissions;
+
+        $user->save();
 
         $this->alert('success', 'دسترسی جدید برای کاربر ایجاد شد.');
         $this->redirectRoute('users.index');

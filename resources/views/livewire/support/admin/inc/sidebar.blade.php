@@ -18,15 +18,16 @@
             </div>
             <div class="d-grid gap-2 mt-5">
                 <a href="{{route('admin.index')}}" type="button" class="btn {{ request()->routeIs('admin.index') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-home"></i> پیشخوان </a>
-                @if('users_index')
+                @can('users_index')
                 <a href="{{ route('users.index') }}" type="button" class="btn {{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-users"></i> کاربران </a>
-                @endcannot
+                @endcan
                 <a href="{{ route('groups.index') }}" type="button" class="btn {{ request()->routeIs('groups.index') || request()->routeIs('groups.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-user-group"></i> گروه ها </a>
                 @can('roles_index')
                 <a href="{{ route('roles.index') }}" type="button" class="btn {{ request()->routeIs('roles.index') || request()->routeIs('roles.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-tower-control"></i> مقام ها </a>
                 @endcannot
                 <a href="{{ route('permissions.index') }}" type="button" class="btn {{ request()->routeIs('permissions.index') || request()->routeIs('permissions.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-lock"></i> دسترسی ها </a>
-                <a href="{{ route('tasks.index') }}" type="button" class="btn {{ request()->routeIs('tasks.index') || request()->routeIs('tasks.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-tasks"></i> وظایف ها </a>
+                <a href="{{ route('tasks.index') }}" type="button" class="btn {{ request()->routeIs('tasks.index') || request()->routeIs('tasks.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-tasks"></i> وظیفه ها </a>
+                <a href="{{ route('projects.index') }}" type="button" class="btn {{ request()->routeIs('projects.index') || request()->routeIs('projects.create') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-file-archive"></i> پروژه ها </a>
             </div>
 
         </div>

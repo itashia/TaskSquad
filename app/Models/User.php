@@ -71,27 +71,27 @@ class User extends Authenticatable
         return $this->permissions->contains('title', $permission->title);
     }
 
-//    public function givePermission($permission): false|array
-//    {
-//        if (is_string($permission)) {
-//            $permission = Permissions::where('title', $permission)->first();
-//        }
-//
-//        if (!$permission) {
-//            return false;
-//        }
-//
-//        return $this->permissions()->syncWithoutDetaching($permission);
-//    }
-//
-//    public function revokePermission($permission): int
-//    {
-//        if (is_string($permission)) {
-//            $permission = Permissions::where('title', $permission)->first();
-//        }
-//
-//        return $this->permissions()->detach($permission);
-//    }
+    public function givePermission($permission): false|array
+    {
+        if (is_string($permission)) {
+            $permission = Permissions::where('title', $permission)->first();
+        }
+
+        if (!$permission) {
+            return false;
+        }
+
+        return $this->permissions()->syncWithoutDetaching($permission);
+    }
+
+    public function revokePermission($permission): int
+    {
+        if (is_string($permission)) {
+            $permission = Permissions::where('title', $permission)->first();
+        }
+
+        return $this->permissions()->detach($permission);
+    }
 
 
     public function isAdmin()

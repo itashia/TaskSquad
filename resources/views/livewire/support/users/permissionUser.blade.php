@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="input1" class="form-label">دسترسی ها</label>
-                        <select class="form-select rounded-5 @error('permissions') is-invalid @enderror" name="permissions" id="permissions" multiple>
+                        <select class="form-select rounded-5 @error('permissions') is-invalid @enderror" name="permissions" wire:model="permissions" id="permissions" multiple>
                             @foreach(\App\Models\Permissions::all() as $permission)
                                 <option value="{{$permission->id}}">{{$permission->title}} - {{$permission->value}}</option>
                             @endforeach
