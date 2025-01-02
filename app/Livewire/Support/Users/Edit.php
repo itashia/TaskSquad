@@ -35,6 +35,8 @@ class Edit extends Component
     public $password;
     #[Validate('image|max:2048')]
     public $pic;
+    #[Validate('required')]
+    public $role_id;
     public User $user;
 
     public function updated($name): void

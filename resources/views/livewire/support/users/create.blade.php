@@ -50,6 +50,16 @@
                     <div class="text-danger">@error('gender') {{ $message }} @enderror</div>
                 </div>
                 <div class="col-md-3">
+                    <label for="input8" class="form-label">مقام</label>
+                    <select class="form-select rounded-5 @error('role_id') is-invalid @enderror" name="role_id" wire:model="role_id" id="input8" aria-label="Default select example">
+                        <option selected>انتخاب کنید ...</option>
+                        @foreach(\App\Models\Roles::all() as $row)
+                            <option value="{{ $row->id }}"> {{ $row->value }}</option>
+                        @endforeach
+                    </select>
+                    <div class="text-danger">@error('role_id') {{ $message }} @enderror</div>
+                </div>
+                <div class="col-md-3">
                     <label for="input9" class="form-label">سمت</label>
                     <input type="text" class="form-control rounded-5 @error('position') is-invalid @enderror" name="position" wire:model="position" id="input9">
                     <div class="text-danger">@error('position') {{ $message }} @enderror</div>

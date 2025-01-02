@@ -37,6 +37,8 @@ class Create extends Component
     public $password;
     #[Validate('image|max:2048')]
     public $pic;
+    #[Validate('required')]
+    public $role_id;
 
     public function updated($name): void
     {
@@ -56,6 +58,7 @@ class Create extends Component
             'gender' => $this->gender,
             'position' => $this->position,
             'birthday' => $this->birthday,
+            'role_id' => $this->role_id,
             'imei' => $this->imei,
             'is_admin' => 0,
             'password' => Hash::make($this->password),
