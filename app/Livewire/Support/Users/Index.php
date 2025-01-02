@@ -5,13 +5,12 @@ namespace App\Livewire\Support\Users;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Masmerise\Toaster\Toaster;
 
 
 class Index extends Component
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -27,7 +26,7 @@ class Index extends Component
     {
         $user = User::find($id);
         $user->delete();
-        $this->alert('success', 'کاربر مورد نظر به زباله دادن برای حذف نهایی منتقل شد!');
+        $this->dispatch('toastr:warning', message: 'کاربر به زباله دان فرستاده شد.');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View

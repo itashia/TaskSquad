@@ -3,22 +3,19 @@
 namespace App\Livewire\Support\Tasks;
 
 use App\Models\Media;
-use App\Models\Roles;
 use App\Models\TaskDetail;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\UserHasTask;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Create extends Component
 {
-    use WithFileUploads, LivewireAlert;
+    use WithFileUploads;
     #[Validate('required')]
     public $type_id;
     #[Validate('required')]
@@ -104,8 +101,8 @@ class Create extends Component
             }
         }
 
+        $this->dispatch('toastr:success', message: 'وظیفه جدید ایجاد شد');
         $this->redirectRoute('tasks.index');
-        $this->alert('success', 'وظایف جدید ایجاد شد.');
     }
     public function uploadFile1(): string
     {

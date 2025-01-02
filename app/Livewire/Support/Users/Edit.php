@@ -4,14 +4,13 @@ namespace App\Livewire\Support\Users;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Edit extends Component
 {
-    use WithFileUploads, LivewireAlert;
+    use WithFileUploads;
 
     #[Validate('required|min:3')]
     public $name;
@@ -61,8 +60,8 @@ class Edit extends Component
         }
 
         $this->user->update($this->validate());
+        $this->dispatch('toastr:success', message: 'کاربر با موفقیت به روز رسانی شد');
         $this->redirectRoute('users.index');
-        $this->alert('success', 'کاربر ویرایش شد.');
     }
     public function uploadImage(): string
     {

@@ -19,13 +19,6 @@
             <div class="d-grid gap-2 mt-5">
 
                 <a href="{{route('admin.index')}}" type="button" class="btn {{ request()->routeIs('admin.index') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-home"></i> پیشخوان </a>
-{{--                <?php--}}
-{{--                if (\Illuminate\Support\Facades\Gate::allows('users_index')) {--}}
-{{--                    dd('User has permission');--}}
-{{--                } else {--}}
-{{--                    dd('User does not have permission');--}}
-{{--                }--}}
-{{--                ?>--}}
                 @can('users_index')
                 <a href="{{ route('users.index') }}" type="button" class="btn {{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit') ? 'btn-light active' : 'btn-light' }} rounded-5"><i class="fa-duotone fa-users"></i> کاربران </a>
                 @endcan

@@ -3,13 +3,12 @@
 namespace App\Livewire\Support\Tasks;
 
 use App\Models\Task;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Send extends Component
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -25,7 +24,7 @@ class Send extends Component
     {
         $tasks = Task::find($id);
         $tasks->delete();
-        $this->alert('success', 'وظایف مورد نظر حذف شد!');
+        $this->dispatch('toastr:success', message: 'وظیفه با موفقیت حذف شد');
     }
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {

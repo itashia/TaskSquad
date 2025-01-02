@@ -3,13 +3,12 @@
 namespace App\Livewire\Support\Projects;
 
 use App\Models\Project;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -25,7 +24,7 @@ class Index extends Component
     {
         $permissions = Project::find($id);
         $permissions->delete();
-        $this->alert('success', 'دسترسی پروژه مورد نظر حذف شد!');
+        $this->dispatch('toastr:success', message: 'پروژه با موفقیت ایجاد شد');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View

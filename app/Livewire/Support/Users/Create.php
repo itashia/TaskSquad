@@ -6,6 +6,7 @@ use AllowDynamicProperties;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -70,8 +71,8 @@ class Create extends Component
             ]);
         }
 
+        $this->dispatch('toastr:success', message: 'کاربر مورد نظر با موفقیت ایجاد شد');
         $this->redirectRoute('users.index');
-        $this->alert('success', 'کاربر جدید ایجاد شد.');
     }
     public function uploadImage(): string
     {

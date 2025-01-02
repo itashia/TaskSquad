@@ -27,44 +27,7 @@ class Index extends Component
     {
         $permissions = Permissions::find($id);
         $permissions->delete();
-        $this->alert('success', 'دسترسی مورد نظر حذف شد!');
-    }
-
-    public function deletePermissionRole($id): void
-    {
-        $permissionRoles = DB::table('permissions_role')->where('permission_id', $id);
-        $permissionRoles->delete();
-        $this->alert('success', 'دسترسی مورد نظر حذف شد!');
-    }
-
-    public function addRoles($data): void
-    {
-        $permission = $data[0];
-        $role = $data[1];
-
-        if (
-            DB::table('permissions_role')
-                ->where('role_id', '=', $role)
-                ->where('permission_id', '=', $permission)
-                ->exists()
-        ) {
-            $this->alert('error', 'مشکلی در ایجاد کردن به وجود آمد!');
-        } else {
-            // Ensure valid foreign keys
-            $permissionExists = DB::table('permissions')->where('id', $permission)->exists();
-            $roleExists = DB::table('roles')->where('id', $role)->exists();
-
-            if (!$permissionExists || !$roleExists) {
-                $this->alert('error', 'دسترسی یا شناسه نامعتبر است!');
-                return;
-            }
-
-            DB::table('permissions_role')->insert([
-                'permission_id' => $permission,
-                'role_id' => $role,
-            ]);
-            $this->alert('success', 'با موفقیت ایجاد شد!');
-        }
+        $this->dispatch('toastr:success', message: 'دسترسی با موفقیت حذف شد');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View

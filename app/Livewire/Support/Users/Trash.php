@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 
 class Trash extends Component
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $readyToLoad = true;
@@ -30,7 +30,7 @@ class Trash extends Component
         }
 
         $user->forceDelete();
-        $this->alert('success', 'کاربر مورد نظر حذف شد!');
+        $this->dispatch('toastr:success', message: 'کاربر با موفقیت حذف شد');
     }
 
     public function recoveryUser($id): void

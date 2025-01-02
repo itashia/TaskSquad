@@ -25,7 +25,7 @@ class Index extends Component
     {
         $tasks = Task::find($id);
         $tasks->delete();
-        $this->alert('success', 'وظایف مورد نظر حذف شد!');
+        $this->dispatch('toastr:success', message: 'وظیفه با موفقیت حذف شد');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View

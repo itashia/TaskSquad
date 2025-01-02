@@ -3,13 +3,12 @@
 namespace App\Livewire\Support\Groups;
 
 use App\Models\Groups;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -25,7 +24,7 @@ class Index extends Component
     {
         $group = Groups::find($id);
         $group->delete();
-        $this->alert('success', 'گروه مورد نظر حذف شد!');
+        $this->dispatch('toastr:success', message: 'گروه با موفقیت حذف شد');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View

@@ -3,14 +3,13 @@
 namespace App\Livewire\Support\Groups;
 
 use App\Models\Groups;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Create extends Component
 {
-    use WithFileUploads, LivewireAlert;
+    use WithFileUploads;
 
     #[Validate('required|min:6')]
     public $name;
@@ -40,7 +39,7 @@ class Create extends Component
             ]);
         }
 
-        $this->alert('success', 'کاربر جدید ایجاد شد.');
+        $this->dispatch('toastr:success', message: 'گروه با موفقیت ایجاد شد');
         $this->redirectRoute('groups.index');
     }
 

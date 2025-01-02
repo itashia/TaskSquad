@@ -31,7 +31,7 @@ class Create extends Component
             'value' => $this->value,
         ]);
 
-        $this->alert('success', 'دسترسی جدید ایجاد شد.');
+        $this->dispatch('toastr:success', message: 'دسترسی جدید ایجاد شد');
         $this->redirectRoute('permissions.index');
     }
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View

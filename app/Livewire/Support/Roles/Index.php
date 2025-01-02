@@ -3,13 +3,12 @@
 namespace App\Livewire\Support\Roles;
 
 use App\Models\Roles;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $search;
@@ -25,7 +24,7 @@ class Index extends Component
     {
         $role = Roles::find($id);
         $role->delete();
-        $this->alert('success', 'مقام مورد نظر حذف شد!');
+        $this->dispatch('toastr:success', message: 'مقام با موفقیت حذف شد');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View

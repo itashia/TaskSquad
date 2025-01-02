@@ -9,7 +9,6 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    use LivewireAlert;
 
     #[Validate('required|min:6')]
     public $title;
@@ -31,7 +30,7 @@ class Create extends Component
             'value' => $this->value,
         ]);
 
-        $this->alert('success', 'مقام جدید ایجاد شد.');
+        $this->dispatch('toastr:success', message: 'مقام جدید ایجاد شد');
         $this->redirectRoute('roles.index');
     }
 

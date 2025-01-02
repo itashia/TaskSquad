@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/all.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
     @livewireStyles
 </head>
 <body>
@@ -31,12 +32,34 @@
 <script src="{{asset('js/main.js')}}"></script>
 {{--<script src="{{asset('js/ckeditor.js')}}"></script>--}}
 <script src="{{asset('js/sweetalert2.js')}}"></script>
+<script src="{{asset('js/toastr.min.js')}}"></script>
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('toastr:success', event => {
+            toastr.success(event.detail.message);
+        });
+        window.addEventListener('toastr:warning', event => {
+            toastr.warning(event.detail.message);
+        });
+        window.addEventListener('toastr:info', event => {
+            toastr.info(event.detail.message);
+        });
+        window.addEventListener('toastr:error', event => {
+            toastr.error(event.detail.message);
+        });
+        toastr.options = {
+            "progressBar": true,
+            "positionClass": "toast-top-left",
+        };
+    });
+</script>
+
 @livewireScripts
 <x-livewire-alert::scripts />
 </body>

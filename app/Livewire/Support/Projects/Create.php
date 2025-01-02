@@ -2,17 +2,14 @@
 
 namespace App\Livewire\Support\Projects;
 
-use App\Models\Media;
-use App\Models\MediaProject;
 use App\Models\Project;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Create extends Component
 {
-    use WithFileUploads, LivewireAlert;
+    use WithFileUploads;
 
     #[Validate('required')]
     public $name;
@@ -42,8 +39,8 @@ class Create extends Component
             ]);
         }
 
+        $this->dispatch('toastr:success', message: 'پروژه با موفقیت ایجاد شد');
         $this->redirectRoute('projects.index');
-        $this->alert('success', 'پروژه جدید ایجاد شد.');
     }
     public function uploadPic(): string
     {
