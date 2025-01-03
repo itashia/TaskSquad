@@ -32,14 +32,14 @@ class Create extends Component
     public $birthday;
     #[Validate('required|min:10')]
     public $imei;
-    #[Validate('required|min:3')]
-    public $username;
     #[Validate('required|min:8')]
     public $password;
     #[Validate('image|max:2048')]
     public $pic;
     #[Validate('required')]
     public $role_id;
+    #[Validate('required')]
+    public $group_id;
 
     public function updated($name): void
     {
@@ -52,7 +52,6 @@ class Create extends Component
 
         $user = User::query()->create([
             'name' => $this->name,
-            'username' => $this->username,
             'email' => $this->email,
             'mobile' => $this->mobile,
             'phone' => $this->phone,
@@ -60,8 +59,10 @@ class Create extends Component
             'position' => $this->position,
             'birthday' => $this->birthday,
             'role_id' => $this->role_id,
+            'group_id' => $this->group_id,
             'imei' => $this->imei,
             'is_admin' => 0,
+            'is_staff' => 1,
             'password' => Hash::make($this->password),
         ]);
 

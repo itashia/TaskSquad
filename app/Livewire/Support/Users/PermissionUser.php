@@ -3,13 +3,11 @@
 namespace App\Livewire\Support\Users;
 
 use App\Models\User;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class PermissionUser extends Component
 {
-    use LivewireAlert;
 
     #[Validate('required|array')]
     public $permissions = [];  // Add this line
@@ -39,7 +37,7 @@ class PermissionUser extends Component
 
         $user->save();
 
-        $this->alert('success', 'دسترسی جدید برای کاربر ایجاد شد.');
+        $this->dispatch('toastr:warning', message: 'دسترسی جدید برای کاربر ایجاد شد.');
         $this->redirectRoute('users.index');
     }
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View

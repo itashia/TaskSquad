@@ -4,7 +4,6 @@ namespace App\Livewire\Support\Users;
 
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -37,7 +36,7 @@ class Trash extends Component
     {
         $user = User::withTrashed()->where('id',$id)->first();
         $user->restore();
-        $this->alert('success', 'با موفقیت کاربر بازیابی شد!');
+        $this->dispatch('toastr:success', message: 'کاربر با موفقیت بازیابی شد');
     }
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View

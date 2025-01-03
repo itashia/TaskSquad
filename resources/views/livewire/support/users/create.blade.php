@@ -11,11 +11,6 @@
                     <div class="text-danger">@error('name') {{ $message }} @enderror</div>
                 </div>
                 <div class="col-md-3">
-                    <label for="input2" class="form-label">نام کاربری</label>
-                    <input type="text" class="form-control rounded-5 @error('username') is-invalid @enderror" name="username" wire:model="username" id="input2">
-                    <div class="text-danger">@error('username') {{ $message }} @enderror</div>
-                </div>
-                <div class="col-md-3">
                     <label for="input3" class="form-label">ایمیل</label>
                     <input type="email" class="form-control rounded-5 @error('email') is-invalid @enderror" name="email" wire:model="email" id="input3">
                     <div class="text-danger">@error('email') {{ $message }} @enderror</div>
@@ -58,6 +53,16 @@
                         @endforeach
                     </select>
                     <div class="text-danger">@error('role_id') {{ $message }} @enderror</div>
+                </div>
+                <div class="col-md-3">
+                    <label for="input8" class="form-label">گروه</label>
+                    <select class="form-select rounded-5 @error('group_id') is-invalid @enderror" name="group_id" wire:model="group_id" id="input8" aria-label="Default select example">
+                        <option selected>انتخاب کنید ...</option>
+                        @foreach(\App\Models\Groups::all() as $row)
+                            <option value="{{ $row->id }}"> {{ $row->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="text-danger">@error('group_id') {{ $message }} @enderror</div>
                 </div>
                 <div class="col-md-3">
                     <label for="input9" class="form-label">سمت</label>

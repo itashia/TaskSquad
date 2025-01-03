@@ -32,7 +32,6 @@ class Index extends Component
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
     {
         $users = $this->readyToLoad ? User::where('name','LIKE',"%{$this->search}%")->
-        orWhere('username','LIKE',"%{$this->search}%")->
         orWhere('email','LIKE',"%{$this->search}%")->
         orWhere('mobile','LIKE',"%{$this->search}%")->
         orWhere('phone','LIKE',"%{$this->search}%")->

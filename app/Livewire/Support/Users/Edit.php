@@ -28,8 +28,6 @@ class Edit extends Component
     public $birthday;
     #[Validate('required|min:10')]
     public $imei;
-    #[Validate('required|min:3')]
-    public $username;
     #[Validate('required|min:8')]
     public $password;
     #[Validate('image|max:2048')]
