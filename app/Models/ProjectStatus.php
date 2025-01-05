@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TaskStatus extends Model
+class ProjectStatus extends Model
 {
     use HasFactory;
 
     protected $fillable=[
-        'is_read',
-        'not_read',
+        'done',
+        'not_done',
         'finish'
     ];
 }

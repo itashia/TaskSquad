@@ -26,4 +26,9 @@ class Project extends Model
     {
         return $this->hasMany(Feature::class);
     }
+
+    public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(ProjectStatus::class,'status_id');
+    }
 }

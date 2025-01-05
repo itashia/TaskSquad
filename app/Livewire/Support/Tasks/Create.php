@@ -47,7 +47,7 @@ class Create extends Component
 
         $this->validate();
 
-        $id_task = Task::get()->last()->id;
+//        $id_task = Task::get()->last()->id;
 
         $task = Task::query()->create([
             'type_id' => $this->type_id,
@@ -55,7 +55,7 @@ class Create extends Component
             'user_id' => $this->user_id,
             'owner_id' => auth()->user()->id,
             'due_date' => Carbon::now(),
-            'number' => $id_task+1,
+            'number' => Task::max('number') + 1,
             'status_id' => 1,
             'priority_id' => $this->priority_id,
         ]);

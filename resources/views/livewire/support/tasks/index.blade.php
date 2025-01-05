@@ -49,7 +49,7 @@
                             @endif
                         </td>
                         <td>{{$row->owner->name}}</td>
-                        <td>{{$row->status->title}}</td>
+                        <td>{{$row->status->not_read}}</td>
                         <td>{{$row->created_at}}</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-danger btn-sm" wire:click="deleteTasks({{$row->id}})"><i class="fa-duotone fa-trash"></i></button>
