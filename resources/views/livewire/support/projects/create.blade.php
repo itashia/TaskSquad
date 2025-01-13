@@ -22,6 +22,16 @@
                                name="pic" accept=".png, .jpg, .jpeg">
                         <div class="text-danger">@error('pic') {{ $message }} @enderror</div>
                     </div>
+                    <div class="col-md-12">
+                        <label for="input1" class="form-label">وضعیت پروژه</label>
+                        <select class="form-select rounded-5 @error('status_id') is-invalid @enderror" name="status_id" wire:model="status_id" id="input1" aria-label="Default select example">
+                            <option selected>انتخاب کنید ...</option>
+                            @foreach(\App\Models\ProjectStatus::all() as $row)
+                                <option value="{{ $row->id }}"> {{ $row->value }}</option>
+                            @endforeach
+                        </select>
+                        <div class="text-danger">@error('status_id') {{ $message }} @enderror</div>
+                    </div>
                     <div class="col-md-3 text-center">
                         <div class="mt-3">
                             @if( $pic )

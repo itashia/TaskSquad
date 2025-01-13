@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('project_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('done')->nullable();
-            $table->string('not_done')->default(1);
-            $table->string('finish');
+            $table->string('title')->nullable();
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }

@@ -17,6 +17,8 @@ class Create extends Component
     public $description;
     #[Validate('nullable')]
     public $pic;
+    #[Validate('nullable')]
+    public $status_id;
     public Project $project;
 
     public function updated($subject): void
@@ -31,6 +33,7 @@ class Create extends Component
         $project = Project::query()->create([
             'name' => $this->name,
             'description' => $this->description,
+            'status_id' => $this->status_id,
         ]);
 
         if ($this->pic) {

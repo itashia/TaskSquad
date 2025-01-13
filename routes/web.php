@@ -51,5 +51,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], static function ($ro
 
     $router->get('/projects', \App\Livewire\Support\Projects\Index::class)->name('projects.index');
     $router->get('/projects/create', \App\Livewire\Support\Projects\Create::class)->name('projects.create');
-
+    $router->get('/projects/{id}/status', \App\Livewire\Support\Projects\Status::class)->name('projects.status');
 });

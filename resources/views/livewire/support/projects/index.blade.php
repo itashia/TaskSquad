@@ -19,7 +19,7 @@
             <th scope="col">توضیحات</th>
             <th scope="col" width="100px">وضعیت</th>
             <th scope="col" width="200px">تاریخ ایجاد</th>
-            <th scope="col" width="50px">عملیات</th>
+            <th scope="col" width="100px">عملیات</th>
         </tr>
         </thead>
         @if($readyToLoad)
@@ -30,10 +30,11 @@
                     <th><img src="{{ asset('storage/'. $row->pic) }}" class="img-fluid rounded-4" alt="" srcset=""></th>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->description }}</td>
-                    <td>{{$row->status->not_done}}</td>
+                    <td>{{$row->status->value}}</td>
                     <td>{{ $row->created_at }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-danger btn-sm" wire:click="deleteProjects({{$row->id}})"><i class="fa-duotone fa-trash text-white"></i></button>
+                        <a href="{{ route('projects.status', $row->id) }}" type="button" class="btn btn-secondary btn-sm"><i class="fa-duotone fa-edit"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm" wire:click="deleteProjects({{$row->id}})"><i class="fa-duotone fa-trash"></i></button>
                     </td>
                 </tr>
             @endforeach
