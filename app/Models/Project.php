@@ -8,19 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'name',
         'description',
+        'pic',
         'status_id',
         'user_id'
     ];
-
-    public function images(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
-    {
-        return $this->hasManyThrough(Media::class, MediaProject::class,'project_id','id','id','media_id');
-    }
 
     public function features(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

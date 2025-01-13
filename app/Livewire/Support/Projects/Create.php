@@ -35,20 +35,17 @@ class Create extends Component
 
         if ($this->pic) {
             $project->update([
-                'pic' => $this->uploadPic()
+                'pic' => $this->uploadImage()
             ]);
         }
 
         $this->dispatch('toastr:success', message: 'پروژه با موفقیت ایجاد شد');
         $this->redirectRoute('projects.index');
     }
-    public function uploadPic(): string
+    public function uploadImage(): string
     {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "projects/$year/$month";
-        $name= $this->pic->getClientOriginalName();
-        $this->pic->storeAs($directory,$name);
+        $year = now()->year; $month = now()->month; $directory = "projects/$year/$month";
+        $name= $this->pic->getClientOriginalName(); $this->pic->storeAs($directory,$name);
         return "$directory/$name";
     }
 
