@@ -8,7 +8,7 @@
         <div class="text-center">
             <span class="badge text-bg-primary rounded-5"><i class="fa-duotone fa-user"></i>  {{ auth()->user()->name }}</span>
             <span class="badge text-bg-success rounded-5">
-                <i class="fa-duotone fa-lock"></i>
+                <i class="fa-duotone fa-lock"></i> {{ auth()->user()->roles->first()->value ?? 'دسترسی تعریف نشده است' }}
             </span>
         </div>
         <div class="p-3">
