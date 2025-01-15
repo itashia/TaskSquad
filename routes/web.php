@@ -43,9 +43,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], static function ($ro
 
     // Tasks
 
-    $router->get('/tasks', \App\Livewire\Support\Tasks\Index::class)->name('tasks.index');
+    $router->get('/tasks', \App\Livewire\Support\Tasks\Index::class)->name('tasks.index')->middleware('auth');
     $router->get('/tasks/create', \App\Livewire\Support\Tasks\Create::class)->name('tasks.create');
-    $router->get('/tasks/send', \App\Livewire\Support\Tasks\Send::class)->name('tasks.send');
 
     // Projects
 

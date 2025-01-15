@@ -25,7 +25,7 @@
 
                 <!-- Receiver -->
                 <div class="col-md-3">
-                    <label for="user_id" class="form-label">گیرنده اصلی</label>
+                    <label for="user_id" class="form-label">ایجاد کننده</label>
                     <select class="form-select rounded-5 @error('user_id') is-invalid @enderror" id="user_id" wire:model="user_id">
                         <option selected>انتخاب کنید ...</option>
                         @foreach($users as $user)
@@ -48,14 +48,14 @@
                 </div>
 
                 <div class="col-md-3">
-                    <label for="role" class="form-label">گیرندگان</label>
-                    <select class="form-select rounded-5 @error('role') is-invalid @enderror" id="role" wire:model="role">
+                    <label for="owner_id" class="form-label">گیرندگان</label>
+                    <select class="form-select rounded-5 @error('owner_id') is-invalid @enderror" id="owner_id" wire:model="owner_id">
                         <option selected>انتخاب کنید ...</option>
-                        @foreach($roles as $row)
-                            <option value="{{ $row->id }}">{{ $row->value }}</option>
+                        @foreach($users as $row)
+                            <option value="{{ $row->id }}">{{ $row->name }}</option>
                         @endforeach
                     </select>
-                    @error('role') <div class="text-danger">{{ $message }}</div> @enderror
+                    @error('owner_id') <div class="text-danger">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="col-md-3">

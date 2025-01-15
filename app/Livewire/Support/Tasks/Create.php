@@ -22,6 +22,8 @@ class Create extends Component
     public $subject;
     #[Validate('required')]
     public $user_id;
+    #[Validate('required')]
+    public $owner_id;
     public $due_date;
     public $number;
     #[Validate('required')]
@@ -47,13 +49,11 @@ class Create extends Component
 
         $this->validate();
 
-//        $id_task = Task::get()->last()->id;
-
         $task = Task::query()->create([
             'type_id' => $this->type_id,
             'subject' => $this->subject,
             'user_id' => $this->user_id,
-            'owner_id' => auth()->user()->id,
+            'owner_id' => $this->owner_id,
             'due_date' => Carbon::now(),
             'number' => Task::max('number') + 1,
             'status_id' => 1,
@@ -89,17 +89,7 @@ class Create extends Component
                 'size' => $this->file3->getSize(),
             ]);
         }
-
-        if ($this->role) {
-            $users = DB::table('role_user')->where('role_id',$this->role)->get();
-            foreach ($users as $row){
-                UserHasTask::create([
-                    'user_id' => $row->user_id,
-                    'task_id' => $task->id,
-                    'access' => 1,
-                ]);
-            }
-        }
+        
 
         $this->dispatch('toastr:success', message: 'وظیفه جدید ایجاد شد');
         $this->redirectRoute('tasks.index');

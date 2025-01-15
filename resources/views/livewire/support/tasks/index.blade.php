@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-md-6">
             <a href="{{ route('tasks.create') }}" type="button" class="btn btn-primary rounded-5"><i class="fa-duotone fa-plus"></i> افزودن وظایف </a>
-            <a href="{{ route('tasks.send') }}" type="button" class="btn btn-warning rounded-5"><i class="fa-duotone fa-tasks"></i> وظایف های دریافتی </a>
         </div>
         <div class="col-md-6">
             <input type="text" wire:model.live="search" class="form-control rounded-5" placeholder="جستجوی وظایف ها ...">
@@ -49,7 +48,7 @@
                             @endif
                         </td>
                         <td>{{$row->owner->name}}</td>
-                        <td>{{$row->status->not_read}}</td>
+                        <td></td>
                         <td>{{$row->created_at}}</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-danger btn-sm" wire:click="deleteTasks({{$row->id}})"><i class="fa-duotone fa-trash"></i></button>
