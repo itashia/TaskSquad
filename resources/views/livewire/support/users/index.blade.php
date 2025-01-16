@@ -18,7 +18,6 @@
                 <th scope="col" width="100px">عکس</th>
                 <th scope="col" width="200px">نام و نام خانوادگی</th>
                 <th scope="col">ایمیل</th>
-                <th scope="col" width="150px">نام کاربری</th>
                 <th scope="col" width="150px">سمت</th>
                 <th scope="col" width="150px">موبایل</th>
                 <th scope="col" width="200px">تاریخ ایجاد</th>
@@ -33,7 +32,6 @@
                     <th><img src="{{ asset('storage/'. $row->pic) }}" class="img-fluid rounded-4" alt="" srcset=""></th>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
-                    <td>{{ $row->username }}</td>
                     <td>{{ $row->position }}</td>
                     <td>{{ $row->mobile }}</td>
                     <td>{{ $row->created_at }}</td>

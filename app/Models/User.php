@@ -94,9 +94,14 @@ class User extends Authenticatable
     }
 
 
-    public function isAdmin()
+//    public function isAdmin()
+//    {
+//        return $this->is_admin;
+//    }
+
+    public function isAdmin(): bool
     {
-        return $this->is_admin;
+        return $this->roles()->where('title', 'isAdmin')->count() > 0;
     }
 
     public function isStaff()

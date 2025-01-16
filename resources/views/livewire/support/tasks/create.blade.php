@@ -58,22 +58,10 @@
                     @error('owner_id') <div class="text-danger">{{ $message }}</div> @enderror
                 </div>
 
-                <div class="col-md-3">
-                    <label for="file1" class="form-label">فایل 1</label>
-                    <input type="file" class="form-control rounded-5 @error('file1') is-invalid @enderror" id="file1" wire:model.lazy="file1">
-                    @error('file1') <div class="text-danger">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="col-md-3">
-                    <label for="file2" class="form-label">فایل 2</label>
-                    <input type="file" class="form-control rounded-5 @error('file2') is-invalid @enderror" id="file2" wire:model.lazy="file2">
-                    @error('file2') <div class="text-danger">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="col-md-3">
-                    <label for="file3" class="form-label">فایل 3</label>
-                    <input type="file" class="form-control rounded-5 @error('file3') is-invalid @enderror" id="file3" wire:model.lazy="file3">
-                    @error('file3') <div class="text-danger">{{ $message }}</div> @enderror
+                <div class="col-md-9">
+                    <label for="input11" class="form-label">عکس پروژه</label>
+                    <input type="file" class="form-control rounded-5 @error('pic') is-invalid @enderror" id="input11" wire:model="pic" name="pic" accept=".png, .jpg, .jpeg">
+                    <div class="text-danger">@error('pic') {{ $message }} @enderror</div>
                 </div>
 
                 <!-- Description -->

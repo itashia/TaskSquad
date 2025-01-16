@@ -19,6 +19,10 @@ class Create extends Component
     public $pic;
     #[Validate('nullable')]
     public $status_id;
+    #[Validate('required')]
+    public $user_id;
+    #[Validate('required')]
+    public $owner_id;
     public Project $project;
 
     public function updated($subject): void
@@ -33,6 +37,8 @@ class Create extends Component
         $project = Project::query()->create([
             'name' => $this->name,
             'description' => $this->description,
+            'user_id' => $this->user_id,
+            'owner_id' => $this->owner_id,
             'status_id' => $this->status_id,
         ]);
 
@@ -54,6 +60,8 @@ class Create extends Component
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('livewire.support.projects.create');
+        return view('livewire.support.projects.create', [
+            'users' => \App\Models\User::where('is_staff', 1)->get(),
+        ]);
     }
 }

@@ -16,11 +16,25 @@
                         <textarea class="form-control rounded-5 @error('description') is-invalid @enderror" name="description" wire:model="description" id="input1"></textarea>
                         <div class="text-danger">@error('description') {{ $message }} @enderror</div>
                     </div>
-                    <div class="col-md-3">
-                        <label for="input11" class="form-label">عکس پروژه</label>
-                        <input type="file" class="form-control rounded-5 @error('pic') is-invalid @enderror" id="input11" wire:model.lazy="pic"
-                               name="pic" accept=".png, .jpg, .jpeg">
-                        <div class="text-danger">@error('pic') {{ $message }} @enderror</div>
+                    <div class="col-md-12">
+                        <label for="user_id" class="form-label">ایجاد کننده</label>
+                        <select class="form-select rounded-5 @error('user_id') is-invalid @enderror" id="user_id" wire:model="user_id">
+                            <option selected>انتخاب کنید ...</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('user_id') <div class="text-danger">{{ $message }}</div> @enderror
+                    </div>
+                    <div class="col-md-12">
+                        <label for="owner_id" class="form-label">گیرندگان</label>
+                        <select class="form-select rounded-5 @error('owner_id') is-invalid @enderror" id="owner_id" wire:model="owner_id">
+                            <option selected>انتخاب کنید ...</option>
+                            @foreach($users as $row)
+                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('owner_id') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
                     <div class="col-md-12">
                         <label for="input1" class="form-label">وضعیت پروژه</label>
@@ -31,6 +45,12 @@
                             @endforeach
                         </select>
                         <div class="text-danger">@error('status_id') {{ $message }} @enderror</div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="input11" class="form-label">عکس پروژه</label>
+                        <input type="file" class="form-control rounded-5 @error('pic') is-invalid @enderror" id="input11" wire:model.lazy="pic"
+                               name="pic" accept=".png, .jpg, .jpeg">
+                        <div class="text-danger">@error('pic') {{ $message }} @enderror</div>
                     </div>
                     <div class="col-md-3 text-center">
                         <div class="mt-3">

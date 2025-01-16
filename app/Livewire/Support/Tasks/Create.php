@@ -24,19 +24,13 @@ class Create extends Component
     public $user_id;
     #[Validate('required')]
     public $owner_id;
-    public $due_date;
     public $number;
     #[Validate('required')]
     public $description;
     #[Validate('required')]
     public $priority_id;
-    #[Validate('nullable')]
-    public $file1;
-    #[Validate('nullable')]
-    public $file2;
-    #[Validate('nullable')]
-    public $file3;
-    public $role;
+    #[Validate('required')]
+    public $pic;
 
     public Task $task;
 
@@ -53,72 +47,27 @@ class Create extends Component
             'type_id' => $this->type_id,
             'subject' => $this->subject,
             'user_id' => $this->user_id,
+            'description' => $this->description,
             'owner_id' => $this->owner_id,
-            'due_date' => Carbon::now(),
             'number' => Task::max('number') + 1,
             'status_id' => 1,
             'priority_id' => $this->priority_id,
         ]);
 
-        TaskDetail::create([
-            'task_id' => $task->id,
-            'description' => $this->description,
-            'user_id' => $this->user_id,
-        ]);
-
-        if ($this->file1) {
-            Media::create([
-                'path' => $this->uploadFile1(),
-                'name' => $this->subject,
-                'size' => $this->file1->getSize(),
+        if ($this->pic) {
+            $task->update([
+                'pic' => $this->uploadImage()
             ]);
         }
-
-        if ($this->file2) {
-            Media::create([
-                'path' => $this->uploadFile2(),
-                'name' => $this->subject,
-                'size' => $this->file2->getSize(),
-            ]);
-        }
-
-        if ($this->file3) {
-            Media::create([
-                'path' => $this->uploadFile3(),
-                'name' => $this->subject,
-                'size' => $this->file3->getSize(),
-            ]);
-        }
-        
 
         $this->dispatch('toastr:success', message: 'وظیفه جدید ایجاد شد');
         $this->redirectRoute('tasks.index');
     }
-    public function uploadFile1(): string
+
+    public function uploadImage(): string
     {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "tasks/$year/$month";
-        $name= $this->file1->getClientOriginalName();
-        $this->file1->storeAs($directory,$name);
-        return "$directory/$name";
-    }
-    public function uploadFile2(): string
-    {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "tasks/$year/$month";
-        $name= $this->file2->getClientOriginalName();
-        $this->file2->storeAs($directory,$name);
-        return "$directory/$name";
-    }
-    public function uploadFile3(): string
-    {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "tasks/$year/$month";
-        $name= $this->file3->getClientOriginalName();
-        $this->file3->storeAs($directory,$name);
+        $year = now()->year; $month = now()->month; $directory = "tasks/$year/$month";
+        $name= $this->pic->getClientOriginalName(); $this->pic->storeAs($directory,$name);
         return "$directory/$name";
     }
 

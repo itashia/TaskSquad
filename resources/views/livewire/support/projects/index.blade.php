@@ -30,7 +30,9 @@
                     <th><img src="{{ asset('storage/'. $row->pic) }}" class="img-fluid rounded-4" alt="" srcset=""></th>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->description }}</td>
-                    <td>{{$row->status->value}}</td>
+                    <td>
+                        {{ $row->status->value }}
+                    </td>
                     <td>{{ $row->created_at }}</td>
                     <td class="text-center">
                         <a href="{{ route('projects.status', $row->id) }}" type="button" class="btn btn-secondary btn-sm"><i class="fa-duotone fa-edit"></i></a>

@@ -31,11 +31,10 @@ class Index extends Component
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        if (Auth::user()->isAdmin()) {
-            $tasks = Task::paginate(10);
-        } else {
-            $tasks = Task::where('owner_id', Auth::id())->paginate(10);
-        }
+        $tasks = Task::when(!Auth::user()->isAdmin(), function ($query) {
+            $query->where('owner_id', Auth::id());
+        })->paginate(10);
+
         return view('livewire.support.tasks.index', compact('tasks'));
     }
 }

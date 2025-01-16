@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('task_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('is_read')->nullable();
-            $table->string('not_read')->default(1);
-            $table->string('finish');
+            $table->string('title')->nullable();
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }
