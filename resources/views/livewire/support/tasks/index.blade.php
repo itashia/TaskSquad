@@ -4,7 +4,9 @@
     </x-slot>
     <div class="row">
         <div class="col-md-6">
-            <a href="{{ route('tasks.create') }}" type="button" class="btn btn-primary rounded-5"><i class="fa-duotone fa-plus"></i> افزودن وظایف </a>
+            @can('creates_index')
+                <a href="{{ route('tasks.create') }}" type="button" class="btn btn-primary rounded-5"><i class="fa-duotone fa-plus"></i> افزودن وظایف </a>
+            @endcan
         </div>
         <div class="col-md-6">
             <input type="text" wire:model.live="search" class="form-control rounded-5" placeholder="جستجوی وظایف ها ...">
@@ -14,14 +16,10 @@
         <thead>
         <tr>
             <th scope="col" width="50px">شناسه</th>
-            <th scope="col" width="200px">عنوان</th>
-            <th scope="col">نوع</th>
-            <th scope="col">ایجاد کننده</th>
-            <th scope="col">اولویت</th>
-            <th scope="col">گیرنده</th>
-            <th scope="col">وضعیت</th>
+            <th scope="col">عنوان</th>
+            <th scope="col" width="100px">وضعیت</th>
             <th scope="col" width="200px">تاریخ ایجاد</th>
-            <th scope="col" width="50px">عملیات</th>
+            <th scope="col" width="150px">عملیات</th>
         </tr>
         </thead>
         @if($readyToLoad)
@@ -30,28 +28,14 @@
                     <tr>
                         <th scope="row">{{ $row->id }}</th>
                         <td>{{ $row->subject }}</td>
-                        <td>
-                            @if($row->type_id == 1)
-                                وظیفه
-                            @else
-                                نامه
-                            @endif
-                        </td>
-                        <td>{{ $row->user->name ?? 'نام کاربری موجود نیست' }}</td>
-                        <td>
-                            @if($row->priority_id == 1)
-                                عادی
-                            @elseif($row->priority_id == 2)
-                                لحظه ای
-                            @else
-                                آنی
-                            @endif
-                        </td>
-                        <td>{{$row->owner->name}}</td>
-                        <td></td>
+                        <td>{{ $row->status->value }}</td>
                         <td>{{$row->created_at}}</td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-danger btn-sm" wire:click="deleteTasks({{$row->id}})"><i class="fa-duotone fa-trash"></i></button>
+                            <a href="{{ route('tasks.status', $row->id) }}" type="button" class="btn btn-secondary btn-sm"><i class="fa-duotone fa-edit"></i></a>
+                            <a href="{{ route('tasks.show', $row->id) }}" type="button" class="btn btn-warning btn-sm"><i class="fa-duotone fa-eye"></i></a>
+                            @can('deletes_index')
+                                <button type="button" class="btn btn-danger btn-sm" wire:click="deleteTasks({{$row->id}})"><i class="fa-duotone fa-trash"></i></button>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

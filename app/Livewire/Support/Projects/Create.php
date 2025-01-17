@@ -53,8 +53,11 @@ class Create extends Component
     }
     public function uploadImage(): string
     {
-        $year = now()->year; $month = now()->month; $directory = "projects/$year/$month";
-        $name= $this->pic->getClientOriginalName(); $this->pic->storeAs($directory,$name);
+        $year = now()->year;
+        $month = now()->month;
+        $directory = "projects/$year/$month";
+        $name= $this->pic->getClientOriginalName();
+        $this->pic->storeAs($directory,$name);
         return "$directory/$name";
     }
 

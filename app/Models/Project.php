@@ -39,13 +39,4 @@ class Project extends Model
         return $this->belongsTo(User::class,'owner_id');
     }
 
-    function getStatusBadgeClass($status) {
-        $classes = [
-            'done' => 'bg-success',
-            'not_done' => 'bg-warning',
-            'end' => 'bg-danger',
-        ];
-        return $classes[$status] ?? 'bg-secondary';
-    }
-
 }

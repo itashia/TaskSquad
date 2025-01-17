@@ -17,7 +17,7 @@
                         <div class="text-danger">@error('status_id') {{ $message }} @enderror</div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary rounded-5">به روز رسانی وضعیت پروژه</button>
+                        <button type="submit" class="btn btn-primary rounded-5">به روز رسانی وضعیت</button>
                     </div>
                 </form>
             </div>

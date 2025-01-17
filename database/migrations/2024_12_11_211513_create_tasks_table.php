@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('user_id')->nullable();
             $table->string('owner_id')->nullable();
             $table->string('pic')->nullable();
+            $table->text('description')->nullable();
             $table->string('number')->nullable();
             $table->string('priority_id')->nullable();
             $table->string('status_id')->nullable();

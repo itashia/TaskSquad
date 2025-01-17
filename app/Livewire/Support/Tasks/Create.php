@@ -2,13 +2,8 @@
 
 namespace App\Livewire\Support\Tasks;
 
-use App\Models\Media;
-use App\Models\TaskDetail;
 use App\Models\Task;
 use App\Models\TaskStatus;
-use App\Models\UserHasTask;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -24,12 +19,11 @@ class Create extends Component
     public $user_id;
     #[Validate('required')]
     public $owner_id;
-    public $number;
     #[Validate('required')]
     public $description;
     #[Validate('required')]
     public $priority_id;
-    #[Validate('required')]
+    #[Validate('nullable')]
     public $pic;
 
     public Task $task;
@@ -38,6 +32,7 @@ class Create extends Component
     {
         $this->validateOnly($subject);
     }
+
     public function saveTask(): void
     {
 
@@ -49,7 +44,6 @@ class Create extends Component
             'user_id' => $this->user_id,
             'description' => $this->description,
             'owner_id' => $this->owner_id,
-            'number' => Task::max('number') + 1,
             'status_id' => 1,
             'priority_id' => $this->priority_id,
         ]);
@@ -66,8 +60,11 @@ class Create extends Component
 
     public function uploadImage(): string
     {
-        $year = now()->year; $month = now()->month; $directory = "tasks/$year/$month";
-        $name= $this->pic->getClientOriginalName(); $this->pic->storeAs($directory,$name);
+        $year = now()->year;
+        $month = now()->month;
+        $directory = "tasks/$year/$month";
+        $name= $this->pic->getClientOriginalName();
+        $this->pic->storeAs($directory,$name);
         return "$directory/$name";
     }
 

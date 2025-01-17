@@ -3,6 +3,7 @@
 namespace App\Livewire\Support\Projects;
 
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -29,7 +30,9 @@ class Index extends Component
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $projects = Project::paginate(10);
+        $projects = Project::when(!Auth::user()->isAdmin(), function ($query) {
+            $query->where('owner_id', Auth::id());
+        })->paginate(10);
         return view('livewire.support.projects.index', compact('projects'));
     }
 }
