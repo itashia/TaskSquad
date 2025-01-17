@@ -23,8 +23,6 @@ class Create extends Component
     public $description;
     #[Validate('required')]
     public $priority_id;
-    #[Validate('nullable')]
-    public $pic;
 
     public Task $task;
 
@@ -48,26 +46,10 @@ class Create extends Component
             'priority_id' => $this->priority_id,
         ]);
 
-        if ($this->pic) {
-            $task->update([
-                'pic' => $this->uploadImage()
-            ]);
-        }
 
         $this->dispatch('toastr:success', message: 'وظیفه جدید ایجاد شد');
         $this->redirectRoute('tasks.index');
     }
-
-    public function uploadImage(): string
-    {
-        $year = now()->year;
-        $month = now()->month;
-        $directory = "tasks/$year/$month";
-        $name= $this->pic->getClientOriginalName();
-        $this->pic->storeAs($directory,$name);
-        return "$directory/$name";
-    }
-
 
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {

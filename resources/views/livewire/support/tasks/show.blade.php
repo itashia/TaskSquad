@@ -60,18 +60,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="card border-0 rounded-4 mt-3">
-                    <div class="card-body">
-                        <span class="fw-bold">عکس پروژه :</span>
-                        <div class="mt-3 text-center">
-                            <img src="{{ asset('storage/'. $task->pic) }}" alt="" srcset="">
-                            <br>
-                            <a href="{{ asset('storage/'. $task->pic) }}" type="button" class="btn btn-primary rounded-5 mt-3"><i class="fa-duotone fa-download"></i> دانلود عکس پروژه </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <a href="{{ route('tasks.index') }}" type="button" class="btn btn-light rounded-5 mt-3 mb-3"><i class="fa-duotone fa-home"></i> برگشت به صفحه وظیفه ها </a>
     @else
