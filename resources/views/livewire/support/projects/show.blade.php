@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card border-0 rounded-5">
-                    <div class="card-body"><span class="fw-bold">نام پروژه :</span> {{$project->name}}</div>
+                    <div class="card-body"><span class="fw-bold">نام پروژه :</span> {{$project->title}}</div>
                 </div>
             </div>
             <div class="col-md-2">

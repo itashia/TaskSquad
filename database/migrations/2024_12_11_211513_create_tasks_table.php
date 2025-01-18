@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('type_id')->nullable();
-            $table->string('subject')->nullable();
+            $table->string('title')->nullable();
             $table->string('user_id')->nullable();
             $table->string('owner_id')->nullable();
             $table->string('pic')->nullable();
-            $table->text('description')->nullable();
-            $table->string('number')->nullable();
+            $table->longText('description')->nullable();
             $table->string('priority_id')->nullable();
             $table->string('status_id')->nullable();
             $table->timestamps();

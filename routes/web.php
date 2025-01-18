@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], static function ($ro
     $router->get('/users/user/{user}', \App\Livewire\Support\Users\Edit::class)->name('users.edit')->middleware('can:users_index');
     $router->get('/users/trash', \App\Livewire\Support\Users\Trash::class)->name('users.trash')->middleware('can:users_index');
     $router->get('/users/{user}/permissions', \App\Livewire\Support\Users\PermissionUser::class)->name('permissionUser.create')->middleware('can:users_index');
+    $router->get('/users/{id}/profile', \App\Livewire\Support\Profile\Index::class)->name('profile.index');
 
     // Groups
 

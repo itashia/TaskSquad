@@ -14,7 +14,7 @@ class Create extends Component
     #[Validate('required')]
     public $type_id;
     #[Validate('required')]
-    public $subject;
+    public $title;
     #[Validate('required')]
     public $user_id;
     #[Validate('required')]
@@ -26,9 +26,9 @@ class Create extends Component
 
     public Task $task;
 
-    public function updated($subject): void
+    public function updated($title): void
     {
-        $this->validateOnly($subject);
+        $this->validateOnly($title);
     }
 
     public function saveTask(): void
@@ -38,7 +38,7 @@ class Create extends Component
 
         $task = Task::query()->create([
             'type_id' => $this->type_id,
-            'subject' => $this->subject,
+            'title' => $this->title,
             'user_id' => $this->user_id,
             'description' => $this->description,
             'owner_id' => $this->owner_id,

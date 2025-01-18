@@ -8,9 +8,9 @@
                 <form class="row g-3" wire:submit.prevent="saveTask">
                     <!-- Subject -->
                     <div class="col-md-12">
-                        <label for="subject" class="form-label">موضوع</label>
-                        <input type="text" class="form-control rounded-5 @error('subject') is-invalid @enderror" id="subject" wire:model="subject">
-                        @error('subject') <div class="text-danger">{{ $message }}</div> @enderror
+                        <label for="title" class="form-label">موضوع</label>
+                        <input type="text" class="form-control rounded-5 @error('title') is-invalid @enderror" id="title" wire:model="title">
+                        @error('title') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <!-- Task Type -->

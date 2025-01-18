@@ -11,24 +11,15 @@ class Task extends Model
 
     protected $fillable=[
         'type_id',
-        'subject',
+        'title',
         'user_id',
         'owner_id',
-        'due_date',
+        'description',
         'number',
         'priority_id',
         'status_id'
     ];
 
-    public function firstDetail()
-    {
-        return $this->hasMany(TaskDetail::class)->orderByDesc('id')->first();
-    }
-
-    public function details(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(TaskDetail::class)->orderByDesc('id');
-    }
 
     public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
@@ -43,15 +34,6 @@ class Task extends Model
     public function owner(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class,'owner_id');
-    }
-    public function priority(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Priority::class,'priority_id');
-    }
-
-    public function participants(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(UserHasTask::class,'task_id');
     }
 
 }

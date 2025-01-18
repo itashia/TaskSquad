@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="card border-0 rounded-5">
-                    <div class="card-body"><span class="fw-bold">نام وظیفه :</span> {{$task->subject}}</div>
+                    <div class="card-body"><span class="fw-bold">نام وظیفه :</span> {{$task->title}}</div>
                 </div>
             </div>
             <div class="col-md-2">
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <span class="fw-bold">توضیحات پروژه :</span>
                         <br>
-                        {{ $task->description }}
+                        {!! $task->description !!}
                         <br>
                         <span class="fw-bold">منتشر شده : {{ $task->created_at->format('M d, Y') }}</span>
                     </div>

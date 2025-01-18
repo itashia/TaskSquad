@@ -7,8 +7,8 @@
             <form class="row g-3" wire:submit.prevent="editUser" enctype="multipart/form-data">
                 <div class="col-md-3">
                     <label for="input1" class="form-label">نام و نام خانوادگی</label>
-                    <input type="text" class="form-control rounded-5 @error('name') is-invalid @enderror" name="name" wire:model="name" id="input1">
-                    <div class="text-danger">@error('name') {{ $message }} @enderror</div>
+                    <input type="text" class="form-control rounded-5 @error('title') is-invalid @enderror" name="title" wire:model="title" id="input1">
+                    <div class="text-danger">@error('title') {{ $message }} @enderror</div>
                 </div>
                 <div class="col-md-3">
                     <label for="input3" class="form-label">ایمیل</label>

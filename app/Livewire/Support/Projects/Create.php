@@ -12,7 +12,7 @@ class Create extends Component
     use WithFileUploads;
 
     #[Validate('required')]
-    public $name;
+    public $title;
     #[Validate('required')]
     public $description;
     #[Validate('nullable')]
@@ -25,17 +25,18 @@ class Create extends Component
     public $owner_id;
     public Project $project;
 
-    public function updated($subject): void
+    public function updated($title): void
     {
-        $this->validateOnly($subject);
+        $this->validateOnly($title);
     }
+
     public function saveProject(): void
     {
 
         $this->validate();
 
         $project = Project::query()->create([
-            'name' => $this->name,
+            'title' => $this->title,
             'description' => $this->description,
             'user_id' => $this->user_id,
             'owner_id' => $this->owner_id,

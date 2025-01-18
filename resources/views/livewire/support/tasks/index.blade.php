@@ -27,7 +27,7 @@
                 @foreach($tasks as $row)
                     <tr>
                         <th scope="row">{{ $row->id }}</th>
-                        <td>{{ $row->subject }}</td>
+                        <td>{{ $row->title }}</td>
                         <td>{{ $row->status->value }}</td>
                         <td>{{$row->created_at}}</td>
                         <td class="text-center">

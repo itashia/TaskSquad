@@ -14,6 +14,7 @@ class Index extends Component
 {
     public function render(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('livewire.support.admin.index');
+        $user = User::all();
+        return view('livewire.support.admin.index', compact('user'));
     }
 }
