@@ -15,14 +15,14 @@ class StatusSeeder extends Seeder
     {
 
         DB::table('project_statuses')->insert([
-            ['title' => 'done', 'value' => 'انجام شده', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'not_done', 'value' => 'انجام نشده', 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'done', 'value' => 'انجام شده', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'end', 'value' => 'پایان', 'created_at' => now(), 'updated_at' => now()]
         ]);
 
         DB::table('task_statuses')->insert([
-            ['title' => 'is_read', 'value' => 'خوانده شده', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'not_read', 'value' => 'خوانده نشده', 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'is_read', 'value' => 'خوانده شده', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'end', 'value' => 'پایان', 'created_at' => now(), 'updated_at' => now()]
         ]);
     }

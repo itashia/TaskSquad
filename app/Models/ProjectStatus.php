@@ -10,8 +10,7 @@ class ProjectStatus extends Model
     use HasFactory;
 
     protected $fillable=[
-        'done',
-        'not_done',
-        'finish'
+        'title',
+        'value'
     ];
 }

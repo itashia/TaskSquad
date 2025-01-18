@@ -23,7 +23,7 @@
                 <tr>
                     <th scope="row">{{ $row->id }}</th>
                     <th><img src="{{ asset('storage/'. $row->pic) }}" class="img-fluid rounded-4" alt="" srcset=""></th>
-                    <td>{{ $row->title }}</td>
+                    <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->position }}</td>
                     <td>{{ $row->mobile }}</td>

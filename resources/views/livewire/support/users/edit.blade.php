@@ -82,9 +82,9 @@
                 </div>
                 <div class="col-md-3 text-center">
                     <div class="mt-3">
-                        @if( $pic )
-                            <img src="{{ $pic->temporaryUrl() }}" class="img-fluid rounded-4" width="150px" alt="" srcset="">
-                        @endif
+{{--                        @if($pic)--}}
+{{--                            <img src="{{$pic->temporaryUrl()}}" class="img-fluid rounded-4" width="150px" alt="" srcset="">--}}
+{{--                        @endif--}}
                     </div>
                 </div>
                 <div class="col-12">

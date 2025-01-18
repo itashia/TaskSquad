@@ -12,7 +12,7 @@
                         <div class="text-danger">@error('title') {{ $message }} @enderror</div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="user_id" class="form-label">ایجاد کننده</label>
                         <select class="form-select rounded-5 @error('user_id') is-invalid @enderror" id="user_id" wire:model="user_id">
                             <option selected>انتخاب کنید ...</option>
@@ -22,7 +22,7 @@
                         </select>
                         @error('user_id') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="owner_id" class="form-label">گیرندگان</label>
                         <select class="form-select rounded-5 @error('owner_id') is-invalid @enderror" id="owner_id" wire:model="owner_id">
                             <option selected>انتخاب کنید ...</option>
@@ -31,16 +31,6 @@
                             @endforeach
                         </select>
                         @error('owner_id') <div class="text-danger">{{ $message }}</div> @enderror
-                    </div>
-                    <div class="col-md-4">
-                        <label for="input1" class="form-label">وضعیت پروژه</label>
-                        <select class="form-select rounded-5 @error('status_id') is-invalid @enderror" name="status_id" wire:model="status_id" id="input1" aria-label="Default select example">
-                            <option selected>انتخاب کنید ...</option>
-                            @foreach(\App\Models\ProjectStatus::all() as $row)
-                                <option value="{{ $row->id }}"> {{ $row->value }}</option>
-                            @endforeach
-                        </select>
-                        <div class="text-danger">@error('status_id') {{ $message }} @enderror</div>
                     </div>
                     <div class="col-md-12">
                         <label for="input1" class="form-label">توضیحات</label>

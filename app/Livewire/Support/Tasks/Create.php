@@ -23,6 +23,7 @@ class Create extends Component
     public $description;
     #[Validate('required')]
     public $priority_id;
+    public $status_id;
 
     public Task $task;
 

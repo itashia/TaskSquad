@@ -10,8 +10,7 @@ class TaskStatus extends Model
     use HasFactory;
 
     protected $fillable=[
-        'is_read',
-        'not_read',
-        'finish'
+        'title',
+        'value'
     ];
 }

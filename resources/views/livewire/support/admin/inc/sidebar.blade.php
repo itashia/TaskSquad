@@ -3,11 +3,7 @@
     <div class="sidebar-heading text-center">میزکار راییوم</div>
     <div style="width: 250px">
         <figure class="text-center">
-            @if(auth()->user()->pic)
-                <img src="{{ asset('storage/'. auth()->user()->pic) }}" class="img-fluid rounded-4">
-            @else
-                <p>عکسی موجود نیست</p>
-            @endif
+            <img src="{{ asset('storage/'. auth()->user()->pic) }}" class="img-fluid rounded-circle" width="80px" height="50px">
         </figure>
         <div class="text-center">
             <span class="badge text-bg-primary rounded-5"><i class="fa-duotone fa-user"></i>  {{ auth()->user()->name }}</span>
@@ -17,7 +13,6 @@
         </div>
         <div class="p-3">
             <div class="text-center">
-                <a href="{{ route('profile.index', auth()->user()->id) }}" type="button" class="btn btn-danger rounded-5 btn-sm"><i class="fa-duotone fa-gear"></i> پروفایل </a>
                 <a href="{{ route('admin.logout') }}" type="button" class="btn btn-danger rounded-5 btn-sm"><i class="fa-duotone fa-sign-out"></i> خروج</a>
             </div>
             <div class="d-grid gap-2 mt-5">

@@ -17,12 +17,11 @@ class Create extends Component
     public $description;
     #[Validate('nullable')]
     public $pic;
-    #[Validate('nullable')]
-    public $status_id;
     #[Validate('required')]
     public $user_id;
     #[Validate('required')]
     public $owner_id;
+    public $status_id;
     public Project $project;
 
     public function updated($title): void
@@ -40,7 +39,7 @@ class Create extends Component
             'description' => $this->description,
             'user_id' => $this->user_id,
             'owner_id' => $this->owner_id,
-            'status_id' => $this->status_id,
+            'status_id' => 1,
         ]);
 
         if ($this->pic) {
