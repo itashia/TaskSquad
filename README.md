@@ -53,6 +53,19 @@ php artisan db:seed --class=StatusSeeder
       <td>
         <img src="./screenshots/admin/roles_index.png" width="100%" alt="Roles">
       </td>
+    </tr>
+  </tbody>
+</table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" width="1000px">Permissions</th>
+      <th scope="col" width="1000px">Tasks</th>
+      <th scope="col" width="1000px">Projects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
       <td>
         <img src="./screenshots/admin/permissions_index.png" width="100%" alt="Permissions">
       </td>
@@ -71,7 +84,7 @@ php artisan db:seed --class=StatusSeeder
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" width="1000px">Admin Index</th>
+      <th scope="col" width="1000px">User Index</th>
       <th scope="col" width="1000px">Tasks</th>
       <th scope="col" width="1000px">Projects</th>
     </tr>
