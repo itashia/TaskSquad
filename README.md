@@ -34,9 +34,6 @@ php artisan db:seed --class=StatusSeeder
       <th scope="col" width="1000px">Users</th>
       <th scope="col" width="1000px">Groups</th>
       <th scope="col" width="1000px">Roles</th>
-      <th scope="col" width="1000px">Permissions</th>
-      <th scope="col" width="1000px">Tasks</th>
-      <th scope="col" width="1000px">Projects</th>
     </tr>
   </thead>
   <tbody>
