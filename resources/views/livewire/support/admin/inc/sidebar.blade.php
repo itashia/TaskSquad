@@ -1,6 +1,8 @@
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading text-center">میزکار راییوم</div>
+    <div class="sidebar-heading text-center fw-bold mb-3" style="font-family: Ubuntu">
+        TaskSquad
+    </div>
     <div style="width: 250px">
         <figure class="text-center">
             <img src="{{ asset('storage/'. auth()->user()->pic) }}" class="img-fluid rounded-circle" width="80px" height="50px">
