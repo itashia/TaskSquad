@@ -1,3 +1,11 @@
+<p align="center">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="./art/Light_TaskSquad.png">
+        <source media="(prefers-color-scheme: light)" srcset="./art/Dark_TaskSquad.png">
+        <img alt="TaskSquad Logo" src="./art/Dark_TaskSquad.png">
+    </picture>
+</p>
+
 ## TaskSquad
 
 A Tasks Management Project Based on Laravel and Livewire 
