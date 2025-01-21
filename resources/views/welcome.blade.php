@@ -18,17 +18,15 @@
                         <img src="{{asset('img/Light_TaskSquad.png')}}" alt="" srcset="">
                     </figure>
                     @if (Route::has('login'))
-                        <nav class="-mx-3 flex flex-1 justify-end">
-                            @auth
-                                <a href="{{ url('/admin') }}" class="btn btn-success btn-lg rounded-5"><i class="fa-duotone fa-user"></i> ورود به مدیریت </a>
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-primary btn-lg rounded-5"><i class="fa-duotone fa-sign-in"></i> ورود </a>
+                        @auth
+                            <a href="{{ url('/admin') }}" class="btn btn-success btn-lg rounded-5"><i class="fa-duotone fa-user"></i> ورود به مدیریت </a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-primary btn-lg rounded-5"><i class="fa-duotone fa-sign-in"></i> ورود </a>
 
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="btn btn-primary btn-lg rounded-5"><i class="fa-duotone fa-user-plus"></i> عضویت</a>
-                                @endif
-                            @endauth
-                        </nav>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="btn btn-primary btn-lg rounded-5"><i class="fa-duotone fa-user-plus"></i> عضویت</a>
+                            @endif
+                        @endauth
                     @endif
                 </div>
             </div>
