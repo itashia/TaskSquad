@@ -19,9 +19,9 @@ To install, proceed in the following order.
 ```bash
 git clone https://github.com/Rayiumir/TaskSquad.git
 cd TaskSquad/
-composer install
 cp .env.example .env
 php artisan key:generate
+composer install
 php artisan migrate
 php artisan serve
 ```
