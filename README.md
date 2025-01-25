@@ -20,17 +20,15 @@ To install, proceed in the following order.
 git clone https://github.com/Rayiumir/TaskSquad.git
 cd TaskSquad/
 cp .env.example .env
-php artisan key:generate
 composer install
+php artisan key:generate
 php artisan migrate
 php artisan serve
 ```
 2- Run Seeders:
 
 ```bash
-php artisan db:seed --class=PermissionsSeeder
-php artisan db:seed --class=RolesSeeder
-php artisan db:seed --class=StatusSeeder
+php artisan db:seed
 ```
 
 ## ScreenShots
