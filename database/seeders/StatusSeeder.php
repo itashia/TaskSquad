@@ -13,7 +13,6 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-
         DB::table('project_statuses')->insert([
             ['title' => 'not_done', 'value' => 'انجام نشده', 'created_at' => now(), 'updated_at' => now()],
             ['title' => 'done', 'value' => 'انجام شده', 'created_at' => now(), 'updated_at' => now()],

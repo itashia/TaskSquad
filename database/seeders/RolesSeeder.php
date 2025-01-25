@@ -15,7 +15,7 @@ class RolesSeeder extends Seeder
     {
         DB::table('roles')->insert([
             ['title' => 'isAdmin', 'value' => 'مدیر کل', 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'isUser', 'value' => 'کاربر عادی', 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'isUser', 'value' => 'کاربر عادی', 'created_at' => now(), 'updated_at' => now()]
         ]);
     }
 }
