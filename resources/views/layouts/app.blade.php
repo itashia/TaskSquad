@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/all.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fonts.css')}}">
     {{ $styles ?? '' }}
+    @yield('styles')
 </head>
 <body>
 <div class="d-flex" id="wrapper">

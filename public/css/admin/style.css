@@ -1,8 +1,5 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
-
-body{
-    font-family: Vazirmatn;
+body {
+    font-family: 'YekanBakh', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
     font-weight: 300;
@@ -14,6 +11,7 @@ body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 #wrapper {
     overflow-x: hidden;
 }
@@ -58,6 +56,7 @@ body{
         margin-right: -15rem;
     }
 }
+
 #menu-toggle {
     margin-right: 15px;
 }
@@ -65,7 +64,8 @@ body{
 summary {
     display: block;
 }
-summary::-webkit-details-marker{
+
+summary::-webkit-details-marker {
     display: none;
 }
 
@@ -82,6 +82,7 @@ summary::-webkit-details-marker{
     color: #212529;
     cursor: pointer;
 }
+
 .icon {
     display: block;
     flex-shrink: 0;
@@ -89,6 +90,7 @@ summary::-webkit-details-marker{
     width: 16px;
     transform-origin: center;
 }
+
 .icon::after {
     content: "";
     position: absolute;
@@ -109,7 +111,7 @@ summary::-webkit-details-marker{
     overflow: hidden;
 }
 
-ul li{
+ul li {
     list-style: none;
     width: 100%;
 }
@@ -137,5 +139,3 @@ ul li{
     background-color: #fef3c7;
     color: #92400e;
 }
-
-
